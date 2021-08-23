@@ -1,0 +1,561 @@
+html,body{
+     height: 100vh; 
+     /* background: linear-gradient(#9e5e31,#a8352c); 
+     overflow: auto; */
+}
+
+#containerUser{
+    padding: 20px 15px;
+    margin: 0 auto;
+    margin-top: 30px;
+    width: 70%;
+}
+
+#containerHeader{
+    height: 95px; 
+    background: #092327;
+    z-index: 1;
+    display: flex;
+}
+
+#containerHeader #containerSearch{
+    padding-left: 30px;
+    flex: 1;
+}
+
+#containerHeader #containerChange{
+    flex : 1;
+    align-self: center;
+}
+
+#containerHeader #containerSearch .inputBox select{
+    font-size: 19px;
+}
+#containerHeader #containerSearch .inputBox select option{
+    font-size: 16px;
+}
+
+#containerHeader #containerChange #icons{
+    height: 40px;
+    width: 150px;
+    position: relative;
+    float: right;
+    margin-right: 35px;
+    margin-top: 25px;
+}
+
+#containerHeader #containerChange #icons a{
+    text-decoration: none;
+    position: absolute;
+    height: 100%;
+    width: 45px;
+    border-radius: 5px;
+    padding-top: 5px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* #containerHeader #containerChange #icons a{
+    text-decoration: none;
+    position: absolute;
+    height: 100%;
+    width: 45px;
+    border-radius: 5px;
+    padding-top: 5px;
+    box-sizing: border-box;
+    text-align: center;
+} */
+
+#containerHeader #containerChange #icons a:nth-child(1){
+    box-sizing: border-box;
+    padding-top: 7px;
+    left: 0;
+}
+
+#containerHeader #containerChange #icons a:nth-child(2){
+    right: 53px;
+}
+
+ #containerHeader #containerChange #icons a:nth-child(3){
+    right: 0;
+}
+
+#containerHeader #containerChange #icons a:hover{
+    background: #245d64;
+}
+
+#containerHeader #containerChange #icons i{
+    text-decoration: none;
+    font-size: 30px;
+    color: rgb(233, 220, 220);
+}
+
+#containerHeader #containerSearch .inputBox{
+    display: inline-block;
+}
+
+#containerHeader #containerSearch .inputBox:nth-child(2){
+    margin-left: 20px;
+}
+
+#containerHeader #containerSearch .inputBox p{
+    font-size: 22px;
+    font-weight: 500;
+    margin-left: 3px;
+    margin-bottom: 5px;
+    color: rgb(233, 220, 220);
+    font-family: 'Fira Sans Condensed', sans-serif;
+}
+
+#containerHeader #containerSearch select{
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: solid 1px rgb(233, 220, 220);
+    color: rgb(233, 220, 220);
+    transition: background-color .2s;
+    font-family: 'Roboto Condensed', sans-serif;
+    background: #092327;
+}
+
+#containerHeader #containerSearch select:hover{
+    border: 2px solid rgb(233, 220, 220);
+}
+
+#containerHeader #containerSearch select option{
+    background: #092327;
+}
+
+#containerHeader #containerSearch .inputBox select:focus{
+    outline: none;
+    border: 2px solid rgb(233, 220, 220);
+}
+
+#containerHeader #containerSearch .inputBox input{
+    width: 160px;
+    height: 30px;
+    font-family: 'Fira Sans Condensed', sans-serif;
+    transition: background-color .2s;
+}
+
+#containerHeader #containerSearch .inputBox input,#containerHeader #containerSearch .inputBox select{
+    padding-left: 5px;
+}
+
+ #containerHeader #containerSearch .inputBox input:hover{
+    outline: none;
+    background: transparent;
+    border: 2px solid black;
+}
+
+#containerBody{
+    background: #092327;
+    border: 1px solid #092327;
+    padding: 20px 25px;
+}
+
+#divMsj{
+    text-align: center;
+}
+
+#msj{
+   font-size: 22px;
+   color: rgb(233, 220, 220);
+   font-family: 'Fira Sans Condensed', sans-serif;
+}
+
+#containerBody form #inputGroup{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    height: auto;
+    margin: 5px 10px 10px 0px;
+  }
+
+  #containerBody form #inputGroup .inputBox{
+      margin-bottom: 15px;
+      width: calc(100% / 2 - 5px);
+  }
+
+  #containerBody form #inputGroup .inputBox p{
+    font-family: 'Fira Sans Condensed', sans-serif;
+    color: rgb(233, 220, 220);
+    font-size: 18px;
+}
+
+#containerBody form #inputGroup .inputBox:nth-child(even) p{
+    margin-left: 20px;
+    text-align: start;
+}
+
+ #containerBody form #inputGroup .inputBox:nth-child(odd) p{
+    margin-right: 15px;
+    width: 50%;
+    float: right;
+}
+
+ #containerBody form #inputGroup .inputBox input{
+     width: 50%;
+     position: relative;
+     height: 30px;
+     outline: none;
+     font-size: 18px;
+     border-radius: 5px;
+     background: #092327;
+     color:rgb(233, 220, 220);
+     border: 1px solid rgb(233, 220, 220);
+     border-bottom: 2px solid rgb(233, 220, 220);
+     padding-left: 15px;
+ }
+
+ #containerBody form #inputGroup .inputBox:nth-child(even) input{
+    margin-left: 10px;
+}
+
+#containerBody form #inputGroup .inputBox:nth-child(3) input, #containerBody form #inputGroup .inputBox:nth-child(1) input{
+    float: right;
+    margin-right: 10px;
+}
+
+#containerBody form #inputGroup .inputBox input:focus,#containerBody form #inputGroup .inputBox select:focus{
+    border: 2px solid rgb(233, 220, 220);;
+    border-bottom: 2px solid rgb(233, 220, 220);;
+}
+
+ #btnBox{
+     height: 40px;
+     width: 90px;
+     margin-top: 5px;
+     position: relative;
+     left: 90%;
+ }
+ 
+ #btnBox button{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    font-family: 'Fira Sans Condensed', sans-serif;
+    background: #245d64;
+    border: 1px solid #245d64;
+    color: rgb(233, 220, 220);
+    font-size: 17px;
+    cursor: pointer;
+ }
+
+ #btnBox button i{
+    font-size: 35px;
+ }
+
+ #btnBox button:hover{
+    background: #214f55;
+ }
+
+ .noscroll{
+    overflow: hidden;
+} 
+
+ .containerModal{
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.3);
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    pointer-events: none;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    max-height: auto;
+    overflow-y: scroll;
+    box-sizing: border-box; 
+    transition: opacity 0.3s ease;
+ }
+
+ .show{
+     opacity: 1;
+     pointer-events: auto;
+ }
+
+ .modal{
+     width: 300px;
+     padding: 20px 25px;
+     background: #bfcbde; 
+     transition: transform 1s;
+     transform: translateY(-200%);
+ }
+
+ .modalOpen{
+    transform: translateY(0%);
+ }
+ 
+
+ /* .modal-close{
+    transform: translateY(-200%);
+ } */
+
+ .modal h2{
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 25px;
+    text-align: center;
+ }
+
+ .modal .inputBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+ }
+
+ .modal .inputBox p{
+    text-align: center;
+    font-family: 'Fira Sans Condensed', sans-serif;
+    font-size: 18px;
+ }
+
+ .modal .inputBox input{
+        text-align: center;
+        width: 80%;
+        height: 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        outline: none;
+        border-bottom: 2px solid black;
+ }
+
+ #btnBox2{
+     text-align: center;
+     margin-top: 20px;
+ }
+
+ #btnBox2 button{
+    border-radius: 5px;
+    height: 30px;
+    width: 100px;
+    font-family: 'Fira Sans Condensed', sans-serif;
+    background: #245d64;
+    border: 1px solid #245d64;
+    color: rgb(233, 220, 220);
+    font-size: 16px;
+    cursor: pointer;
+ }
+
+ #btnBox2 button:hover{
+    background: #214f55;
+    border: 1px solid #214f55;
+ }
+
+@media(max-width:1150px) and (min-width:992.1px) { 
+    #containerHeader #containerSearch select{
+        width: 170px;
+    }
+    #containerBody form #inputGroup .inputBox input{
+        width: 60%;
+    }
+     #containerBody form #inputGroup .inputBox:nth-child(odd) p{
+        margin-right: 60px;
+    }
+    #btnBox{
+        margin-top: 15px;
+        left: 86%;
+    }
+}
+
+ @media(max-width:991.9px) and (min-width:820px) { 
+#containerHeader #containerSearch select{
+    width: 170px;
+}
+#containerBody form #inputGroup .inputBox input{
+    width: 65%;
+}
+ #containerBody form #inputGroup .inputBox:nth-child(odd) p{
+    margin-right: 65px;
+}
+#btnBox{
+    margin-top: 15px;
+    left: 84%;
+}
+}
+
+@media(max-width:819px) and (min-width:720px) {
+#containerUser{
+    width: 80%;
+}
+#containerBody form #inputGroup .inputBox input{
+    width: 65%;
+}
+#btnBox{
+    left: 90%;
+}
+#containerBody form #inputGroup .inputBox:nth-child(odd) p{
+    margin-right: 65px;
+}
+#btnBox{
+    margin-top: 15px;
+    left: 84%;
+}
+}
+
+@media(max-width:719px) and (min-width:600px){  
+#containerUser{
+    width: 85%;
+    padding: 15px 10px;
+}
+#containerBody form #inputGroup .inputBox input{
+    width: 80%;
+    padding-left: 5px;
+}
+#btnBox{
+    left: 87%;
+}
+ #containerBody form #inputGroup .inputBox:nth-child(odd) p{
+    margin-right: 80px;
+} 
+#btnBox{
+    margin-top: 15px;
+    left: 82%;
+}
+/*
+#containerFooter form #inputGroup .inputBox:nth-child(1) p{
+    margin-left: 35px;
+} */
+}
+
+@media(max-width:599px) and (min-width:530px){
+    #containerUser{
+        width: 90%;
+    }
+    #containerHeader #containerSearch .inputBox:nth-child(2){
+        margin-bottom: 10px;
+        margin-left: 0px;
+    }
+    #containerBody form #inputGroup .inputBox input{
+        width: 90%;
+        padding-left: 5px;
+        font-size: 16px;
+    }
+    #containerBody form #inputGroup .inputBox:nth-child(odd) p{
+        margin-right: 100px;
+    }
+    #btnBox{
+        left: 80%;
+        margin-top: 15px;
+    }
+}
+
+@media(max-width:529px) and (min-width:400px){
+    #containerUser{
+        width: 100%;
+        box-sizing: border-box;
+    }
+    #containerHeader #containerSearch .inputBox select{
+        font-size: 17px;
+    }
+    #containerHeader #containerSearch .inputBox select option{
+        font-size: 14px;
+    }
+    #containerHeader #containerChange #icons{
+        margin-right: 15px;
+    }
+    #containerHeader #containerSearch .inputBox:nth-child(2){
+        margin-bottom: 10px;
+        margin-left: 0px;
+    }
+    #containerBody form #inputGroup .inputBox input{
+        width: 95%;
+        padding-left: 5px;
+    }
+     #containerBody form #inputGroup .inputBox:nth-child(3) input,#containerBody form #inputGroup .inputBox:nth-child(1) input{
+        margin: 0;
+     }
+    #btnBox{
+        left: 80%;
+        margin-top: 20px;
+    }
+     #containerBody form #inputGroup .inputBox:nth-child(3) p{
+        float: left;
+        margin-left: 10px;
+    }
+    #containerBody form #inputGroup .inputBox:nth-child(1) p{
+        float: left;
+        margin-left: 10px;
+    }
+}
+
+@media(max-width:420px) and (min-width:400px){
+    #btnBox{
+        left: 75%;
+        margin-top: 20px;
+    }
+}
+
+@media(max-width:399px) and (min-width:280px){
+    #containerUser{
+        width: 100%;
+        box-sizing: border-box;
+        background: red;
+    }
+    #containerHeader{
+        height: auto;
+        flex-direction: column;
+    }
+    #containerHeader #containerChange{
+        width: 100%;
+    }
+    #containerHeader #containerSearch{
+        margin-left: 15px;
+        padding: 0;
+    }
+    #containerHeader #containerSearch .inputBox select{
+        font-size: 16px;
+    }
+    #containerHeader #containerSearch .inputBox select option{
+        font-size: 13px;
+    }
+    #containerHeader #containerSearch .inputBox:nth-child(2){
+        margin-bottom: 10px;
+        margin-left: 0px;
+    } 
+    #containerHeader #containerChange #icons{
+        float: left;
+        margin-left: 20px;
+        font-size: 15px;
+    }
+    #containerBody{
+        padding: 5px 10px;
+    }
+    #containerBody form #inputGroup{
+        margin: 0 auto;
+    }
+    #containerBody form #inputGroup .inputBox input{
+        width: 95%;
+        margin: 0 auto;
+        padding-left: 8px;
+    }
+    #containerBody form #inputGroup .inputBox{
+       width: 100%;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: center;
+       text-align: center;
+    }
+    #containerBody form #inputGroup .inputBox:nth-child(1) p,#containerBody form #inputGroup .inputBox:nth-child(2) p,#containerBody form #inputGroup .inputBox:nth-child(3) p,#containerBody form #inputGroup .inputBox:nth-child(4) p{
+        margin: 15px 0;
+     }
+    #containerBody form #inputGroup .inputBox:nth-child(2) p, #containerBody form #inputGroup .inputBox:nth-child(4) p{
+        text-align: center;
+    }
+    #containerBody form #inputGroup .inputBox:nth-child(2) input, #containerBody form #inputGroup .inputBox:nth-child(4) input,#containerBody form #inputGroup .inputBox:nth-child(3) input{
+        margin: 0;
+        /* padding: 0; */
+    }
+    #btnBox{
+        width: 150px;
+        height: 40px;
+        left: 0;
+        margin: 15px auto;
+    }
+}

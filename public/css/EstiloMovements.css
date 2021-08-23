@@ -1,0 +1,237 @@
+body{
+    height: 100vh;
+    background: linear-gradient(#9e5e31,#a8352c);
+    padding: 0;
+    margin: 0;
+}
+
+#containerMovement{
+    background: #092327;
+    padding: 25px 20px;
+    margin: 0 auto;
+    margin-top: 20px;
+    white-space: nowrap;
+    width: 70%;
+}
+
+#divMsj{
+    width: 100%;
+    text-align: center;
+    white-space: normal;
+}
+
+#msj{
+    font-size: 22px;
+    color: rgb(233, 220, 220);
+    font-family: 'Fira Sans Condensed', sans-serif;
+}
+
+#containerDelete{
+    display: inline-block;
+    width: 50%;
+}
+
+#containerNew{
+    display: inline-block;
+    width: 50%;
+}
+
+#containerMovement .inputBox{
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+#containerMovement h2{
+    display: block;
+    width: 100%;
+    color: rgb(233, 220, 220);
+    font-family: 'Fira Sans Condensed', sans-serif;
+}
+
+#containerDelete .inputBox select,#containerModify form .inputBox select{
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    border: solid 1px rgb(233, 220, 220);
+    border-bottom: 2px solid rgb(233, 220, 220);
+    color: rgb(233, 220, 220);
+    /* transition: background-color .2s; */
+    font-family: 'Roboto Condensed', sans-serif;
+    background: #092327;
+    margin-right: 20px;
+    margin-bottom: 4px;
+}
+
+#containerModify form .inputBox select{
+    margin-right: 77px;
+    margin-bottom: 8px;
+}
+
+#containerDelete .inputBox select:hover, #containerNew .inputBox input:hover,#containerModify .inputBox select:hover,#containerModify .inputBox input:hover{
+     /* border: 2px solid rgb(233, 220, 220); */
+     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgb(184, 170, 170);
+     box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgb(184, 170, 170);
+}
+
+#containerDelete .inputBox select option{
+    background: #092327;
+}
+
+#containerDelete .inputBox select:focus,#containerModify form .inputBox select:focus{
+    outline: none;
+}
+
+#containerDelete .inputBox button{
+    width: 45px;
+    height: 35px;
+    border-radius: 5px;
+    font-family: 'Fira Sans Condensed', sans-serif;
+    background: #245d64;
+    border: 1px solid #245d64;
+    color: rgb(233, 220, 220);
+    cursor: pointer;
+    font-size: 20px;
+    padding-top: 5px;
+    margin-bottom: 4px;
+    transition: all 0.2s;
+ }
+
+ #containerDelete .inputBox button:hover{
+    background: #214f55;
+    font-size: 23px;
+ }
+
+ #containerNew .inputBox input, #containerModify form .inputBox input{
+    width: 150px;
+    height: 23px;
+    outline: none;
+    font-size: 16px;
+    font-family: 'Fira Sans Condensed', sans-serif;
+    border-radius: 5px;
+    background: #092327;
+    color:rgb(233, 220, 220);
+    border: 1px solid rgb(233, 220, 220);
+    border-bottom: 2px solid rgb(233, 220, 220);
+    padding: 3px 10px;
+    margin-right: 20px;
+    transition: background-color .2s;
+ }
+
+ #containerModify form .inputBox input{
+     margin-right: 0;
+ }
+
+ #containerNew .inputBox input::placeholder{
+    font-size: 15px;
+ }
+
+  #containerNew .inputBox button, #containerModify form .inputBox button{
+    width: 75px;
+    height: 32px;
+    border-radius: 5px;
+    font-family: 'Fira Sans Condensed', sans-serif;
+    background: #245d64;
+    border: 1px solid #245d64;
+    color: rgb(233, 220, 220);
+    font-size: 17px;
+    cursor: pointer;
+    transition: all 0.1s;
+ } 
+
+ #containerModify form .inputBox button{
+     width: 85px;
+     margin-left: 15px;
+ }
+
+ #containerNew .inputBox button:hover, #containerModify form .inputBox button:hover{
+    background: #214f55;
+    font-size: 19px;
+ }
+
+ #containerModify{
+     width: 50%;
+     margin: 0 auto;
+     display: flex;
+     text-align: center;
+     justify-content: center;
+ }
+
+ @media(max-width:819px) and (min-width:720px) {
+       #containerMovement{
+        width: 85%;
+       }
+    }
+    
+    @media(max-width:719px) and (min-width:600px){  
+        #containerMovement{
+            width: 90%;
+           }
+           #containerModify{
+               width: 60%;
+           }
+        }
+    
+    @media(max-width:599px) and (min-width:470px){
+        #containerMovement{
+            width: 90%;
+           }
+           #containerMovement h2{
+            font-size: 21px;
+        }
+        #containerModify form .inputBox select{
+            margin-right: 0;
+        }
+        #containerDelete .inputBox,#containerNew .inputBox,#containerModify form .inputBox{
+            display: flex;
+            flex-direction: column;
+        }
+         #containerModify form .inputBox button{
+            margin-left: 0;
+        }
+        #containerDelete .inputBox select,#containerModify form .inputBox select,#containerNew .inputBox input, #containerModify form .inputBox input{
+            margin-bottom: 10px;
+        }     
+    }
+    
+    @media(max-width:469px) and (min-width:280px){
+        #containerMovement{
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+           }
+        #containerModify form .inputBox select{
+            margin-right: 0;
+        }
+        #containerDelete .inputBox,#containerNew .inputBox,#containerModify form .inputBox{
+            display: flex;
+            flex-direction: column;
+        }
+        #containerNew,#containerDelete{
+            width: 50%;
+            margin: 0 auto;
+            display: flex;
+            text-align: center;
+            justify-content: center;
+        }
+         #containerModify form .inputBox button{
+            margin-left: 0;
+        }
+        #containerDelete .inputBox button,#containerNew .inputBox button{
+            margin: 0;
+        }
+        #containerDelete .inputBox select,#containerModify form .inputBox select,#containerNew .inputBox input, #containerModify form .inputBox input{
+            margin: 0;
+            margin-bottom: 10px;
+        }
+        #containerModify form .inputBox select option, #containerDelete form .inputBox select option{
+            font-size: 14px;
+        }
+    }

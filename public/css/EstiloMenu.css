@@ -1,0 +1,108 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.bg-theme{
+    /* background: url(../img/starliner.gif); */
+    background: url(../img/blue-strped-circles.gif);
+    /* background: url(../img/discs.gif); */
+    /* background: url(../img/gunpowder-velvet.gif); */
+    /* background: url(../img/prim-walls.gif); */
+    /* background: url(../img/sapphire.gif); */
+}
+ #menu{
+    width: 100%;
+    list-style: none;
+    background: #092327;
+    margin: 0;
+    padding: 0;
+    height: 60px;
+    box-sizing: border-box;
+} 
+
+#menu li{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: inline-block;
+    text-align: center;
+}
+
+#liName{
+    width: 130px;
+}
+
+#liName a i{
+   font-size: 30px;
+   color: rgb(233, 220, 220);
+}
+
+#menu li p{
+    font-family: 'Fira Sans Condensed', sans-serif;
+    font-size: 19px;
+    color: rgb(233, 220, 220);
+}
+
+ #liIcon{
+    float: right;
+} 
+
+#menu li a{
+    display: block;
+    height: 100%;
+    text-decoration: none;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.icon-config{
+    font-size: 25px;
+    color: rgb(233, 220, 220);
+}
+
+#menu li a:hover{
+    background: #245d64;
+}
+
+#menu #submenu{
+    position: relative;
+    padding: 0;
+    background: #092327;
+    z-index: 5;
+    /* height: 0; */
+     max-height: 0;
+     transition: max-height 0.40s ease-out;
+    overflow: hidden;
+}
+
+#menu #submenu li{
+    width: 170px;
+    display: block;
+    border-bottom: 2px solid #242b2c;
+    z-index: 20;
+}
+
+#menu #submenu li:nth-child(3){
+    border-bottom: none;
+}
+
+#menu #submenu li a{
+    font-family: 'Fira Sans Condensed', sans-serif;
+    text-decoration: none;
+    color: rgb(233, 220, 220);
+    z-index: 20;
+}
+
+.mostrar{
+    height: 200px;
+    visibility: visible;
+}
+
+@media(max-width:529px){
+    #menu #submenu li{
+        width: 120px;
+    }
+    #liName{
+        width: 120px;
+    }
+}

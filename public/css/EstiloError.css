@@ -1,0 +1,68 @@
+body{
+    background-color: #303836;
+}
+
+#containerError{
+    width: 550px;
+    height: 300px;
+    margin: 0 auto;
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -275px;
+    margin-top: -150px
+}
+
+.error-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+.error-icon i{
+    font-size: 130px;
+    color:  #d1ede6;
+}
+
+.error-message{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+}
+
+.error-message p{
+    margin: 0;
+    margin-top: 5px;
+    font-family: 'Poppins', sans-serif;
+    color: #d1ede6;
+}
+
+#title{
+    font-size: 35px;
+    font-weight: 500;
+}
+
+#message{
+    font-size: 18px;
+    text-align: left;
+}
+
+#small{
+    font-size: 15px;
+    color: #8aa690;
+    text-align: left;
+}
+
+.error-message a{
+    font-size: 17px;
+    color: #72b580;
+    text-decoration: none;
+}
+
+.error-message a:hover{
+    color: #549c63;
+}
