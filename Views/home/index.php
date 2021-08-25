@@ -79,12 +79,7 @@
 
   </div>
   <!-- Cierre container Header -->
-  <?php  if(isset($this->msj)){
-  
-  ?>  <div id="containerMessage">
-  <p id="msj"><?php echo $this->msj; ?></p>
-  </div>
-  <?php }
+  <?php 
   if (isset($_GET['resultado'])){
     if($_GET['resultado']=="Success"){ 
    ?> <div id="containerMessage">
