@@ -17,11 +17,10 @@ function __construct(){
 
      $archivocontroller = "Controllers/".$url[0].".php";
 
-     if(file_exists($archivocontroller)){
-
-         require_once $archivocontroller;
-         $controller = new $url[0];
-         $controller->loadModel($url[0]);
+    if(file_exists($archivocontroller)){
+        require_once $archivocontroller;
+        $controller = new $url[0];
+        $controller->loadModel($url[0]);
 
          $nparam = sizeof($url);
          if($nparam>1){
@@ -32,35 +31,26 @@ function __construct(){
                    array_push($param,$url[$i]);
                }
             //    var_dump($param);
-
             if(method_exists($controller,$url[1])){
                $controller->{$url[1]}($param);
             }
-            else{
-                header("location:".constant('URL')."errorP");
-            }
-
+            else{ header("location:".constant('URL')."errorP"); }
            }
-           else{
 
+           else{
             if(method_exists($controller,$url[1])){
             $controller->{$url[1]}();
              }
-             else{
-                header("location:".constant('URL')."errorP");
-             }
+            else{ header("location:".constant('URL')."errorP"); }
+            }
+          }
 
-           }
-         }
-         else{
-             $controller->render();
-         }
+         else{ $controller->render();}
      }
-       else{
-           $controller = new errorP();
-           $controller->render();
-       }
+    else{
+        $controller = new errorP();
+        $controller->render();
+    }
 }
-
 }
 ?>

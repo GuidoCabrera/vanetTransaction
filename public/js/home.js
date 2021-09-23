@@ -140,7 +140,7 @@ $('#date').datetimepicker({
           //  console.log(valParam);
              $.ajax({
                 type: 'POST',
-                url: 'http://192.168.2.102/PHP/vanetTransaction/home/deleteTransac',
+                url: constantURL+'home/deleteTransac',
                 data: { tuArrJson: valParam},
                 success: function(resp){
                    $("#respa").html(resp);

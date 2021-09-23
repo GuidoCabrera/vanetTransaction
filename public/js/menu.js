@@ -1,5 +1,6 @@
 var btn = document.getElementById("submenuBtn");
 var subMenu = document.getElementById("submenu");
+var rol = document.getElementById("pRol");
 //Menu Desplegable
 btn.addEventListener("click",function(){
     const subMenu = this.nextElementSibling;
@@ -10,7 +11,13 @@ btn.addEventListener("click",function(){
     }
     else{
         subMenu.classList.add("desplegar");
-        subMenu.style.maxHeight = "200px";
+        if(rol.textContent==1){
+        subMenu.style.maxHeight = "181px";
+        }
+        else{
+        subMenu.style.maxHeight = "61px";
+        subMenu.style.transition = "max-height 0.20s ease-out";
+        }
         subMenu.style.height = "auto";
         subMenu.style.zIndex = "3";
     }

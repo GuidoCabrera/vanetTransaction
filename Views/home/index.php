@@ -179,7 +179,7 @@
        <p>Movimiento</p>
        <select name="selectMovement" id="selectMovement">
        <?php foreach($this->movements as $movement){ ?>
-             <option value="<?php echo $movement["id"] ?>"><?php echo $movement["nombre"] ?></option>
+             <option value="<?php echo $movement["id"] ?>"><?php echo $movement["name"] ?></option>
        <?php } ?>
        </select>
      </div>
@@ -278,6 +278,7 @@
 <script src="<?php echo constant("URL")?>public/js/jquery-3.6.0.min.js"></script>
 <script src="<?php echo constant("URL")?>public/js/datepicker.js"></script>
 <script src="<?php echo constant("URL")?>public/js/menu.js"></script>
+<script src="<?php echo constant("URL")?>public/js/url.js"></script>
 <script src="<?php echo constant("URL")?>public/js/home.js"></script>
 <script src="<?php echo constant("URL")?>public/js/modalHome.js"></script>
 

@@ -15,20 +15,14 @@ var selectTransacMov = document.getElementById("selectMovement");
 var transactionsM = [[],[],[],[],[],[]];
 
 
-selected2 = (e) =>{
+   selected2 = (e) =>{
 
     if(e.target.checked){
-       var movement2 = document.getElementById("movement"+e.target.dataset.id);
-       var detail2 = document.getElementById("detail"+e.target.dataset.id);
-       var income2 = document.getElementById("income"+e.target.dataset.id);
-       var egress2 = document.getElementById("egress"+e.target.dataset.id);
-       var methodP2 = document.getElementById("methodP"+e.target.dataset.id);
-       transactionsM[0].push(movement2.textContent);
-       transactionsM[1].push(detail2.textContent);
-       transactionsM[2].push(income2.textContent);
-       transactionsM[3].push(egress2.textContent);
-       transactionsM[4].push(methodP2.textContent);
-       transactionsM[5].push(e.target.dataset.id);
+      let array = ["movement","detail","income","egress","methodP"];
+      for(var i=0;i<5;i++){
+        transactionsM[i].push(document.getElementById(array[i]+e.target.dataset.id).textContent);
+      }
+      transactionsM[5].push(e.target.dataset.id);
     }
     else{
       removeArr2(transactionsM[0],transactionsM[1],transactionsM[2],transactionsM[3],transactionsM[4],transactionsM[5],e.target.dataset.id);
@@ -37,22 +31,14 @@ selected2 = (e) =>{
 
   function removeArr2(movement,detail,income,egress,methodP,arrayId,id){
     var y = arrayId.indexOf(id);
-    if(y!==-1){
-        movement.splice(y,1);
-        detail.splice(y,1);
-        income.splice(y,1);
-        egress.splice(y,1);
-        methodP.splice(y,1);
-        arrayId.splice(y,1);
-    }
+    let array = [movement,detail,income,egress,methodP,arrayId];
+    if(y!==-1){ array.forEach(element=>element.splice(y,1)); }
   }
 
   checkBox2.forEach((e)=>{
-    e.addEventListener("change",selected2);
-});
+    e.addEventListener("change",selected2); });
   
-
-btnModifyTransac.addEventListener("click",function(){
+  btnModifyTransac.addEventListener("click",function(){
 
     if(transactionsM[5].length==1){
     if(subMenu.classList.contains("desplegar")){
@@ -116,12 +102,10 @@ btnModify.addEventListener("click",function(){
          egressModif = transactionsM[3];
       }
        array.push(valueMovement,detailModif.toString(),entryModif.toString(),egressModif.toString(),valuePayment,transactionsM[5].toString());
-        // console.log(array);
        var param = JSON.stringify(array);
-        // console.log(param);
        $.ajax({
         type: 'POST',
-        url: 'http://192.168.2.102/PHP/vanetTransaction/home/modifyTransac',
+        url: constantURL+'home/modifyTransac',
         data: { ArrayJson: param},
         success: function(respa) {
            $("#respa2").html(respa);

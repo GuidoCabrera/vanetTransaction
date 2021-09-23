@@ -10,7 +10,7 @@ class users extends controller{
     function render(){
         session_start();
         if(isset($_SESSION['usuario']['name'])&&isset($_SESSION['usuario']['rol'])&&$_SESSION['usuario']['rol']==1){
-            // var_dump($_SESSION['user']['time']);
+            // var_dump($_SESSION['usuario']['time']);
             // var_dump(time());
             if((time() - $_SESSION['usuario']['time']) > 1800) // 900 = 15 * 60  
            {  
@@ -22,7 +22,6 @@ class users extends controller{
                 $datos = $this->model->getCurrentUser($_SESSION['usuario']['id']);
                 // $datos2 = $this->model->getOthersUsers($_SESSION['usuario']['id']);
                 $this->view->usuarioActual = $datos;
-                // $this->view->usuarios = $datos2;
                 $datos2 = $this->model->getAllUsers();
                 $this->view->usuarios = $datos2;
                 $this->view->render("Users");
@@ -43,6 +42,9 @@ class users extends controller{
              $this->view->usuarioSeleccionado = $datos;
              $this->render("Users");
          }
+         else{
+            header("location:".constant('URL')."Users");
+         }
      }
 
      function newUser(){
@@ -57,18 +59,15 @@ class users extends controller{
                 $results = "Success";
                 header("location:".constant('URL')."Users?resultado=".$results);
              }
-             else{
-                header("location:".constant('URL')."errorP"); 
-             }
+             else{ header("location:".constant('URL')."errorP"); }
         }
      }
 
      function modifyUser(){
         session_start();
         if(isset($_POST["name"])&&isset($_POST["surname"])&&isset($_POST["password"])&&isset($_POST["rol"])){
-             $array = array("Nombre"=>$_POST["name"],"Apellido"=>$_POST["surname"],"Contraseña"=>$_POST["password"],"IdRol"=>$_POST["rol"],"IdUsuario"=>$_POST["id"]);
-        
-           $user = $this->model->modifyUser($array);
+          $array = array("Nombre"=>$_POST["name"],"Apellido"=>$_POST["surname"],"Contraseña"=>$_POST["password"],"IdRol"=>$_POST["rol"],"IdUsuario"=>$_POST["id"]);
+          $user = $this->model->modifyUser($array);
             if($user){
             $datos2 = $this->model->getAllUsers();
             $this->view->usuarios = $datos2;
@@ -77,30 +76,34 @@ class users extends controller{
             header("location:".constant('URL')."Users?resultado=".$results);
             $this->view->render("Users");
             }
-              else{
-                header("location:".constant('URL')."errorP"); 
-              }
+            else{ header("location:".constant('URL')."errorP"); }
         }
-        else{
-            header("location:".constant('URL')."errorP"); 
-        }
+        else{ header("location:".constant('URL')."errorP"); }
      }
 
      function deleteUser(){
-         if(isset($_POST["id"])){
-             if($this->model->deleteUser($_POST["id"])){
-                echo "<script type='text/javascript'>  
-                alert('Usuario eliminado con exito');
-                window.location.href = 'http://192.168.2.102/PHP/vanetTransaction/Users';
-                </script>"; 
+        if(isset($_POST["id"])){
+            session_start();
+             if($_POST["id"]!=$_SESSION['usuario']['id']){
+              if($this->model->deleteUser($_POST["id"])){
+                 echo "<script type='text/javascript'>  
+                 alert('Usuario eliminado con exito');
+                  window.location.href = '".constant("URL")."Users';
+                 </script>"; 
+                 }
+              else{
+                 echo "<script type='text/javascript'>  
+                 alert('Ha ocurrido un error al eliminar el usuario, vuelva a intentar mas tarde');
+                 window.location.href = '".constant("URL")."Users';
+                 </script>"; 
+              }
              }
              else{
-                echo "<script type='text/javascript'>  
-                alert('Ha ocurrido un error al eliminar el usuario, vuelva a intentar mas tarde');
-                window.location.href = 'http://192.168.2.102/PHP/vanetTransaction/Users';
-                </script>"; 
+                     echo "<script type='text/javascript'>  
+                 alert('El usuario esta iniciado sesion, no se puede eliminar');
+                 </script>"; 
+                 }
              }
-         }
      }
 
 }

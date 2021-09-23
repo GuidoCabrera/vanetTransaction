@@ -16,8 +16,8 @@
      $url = explode("/",$url); 
      $url1 = explode("?",$url[3]);
      if(strcasecmp($url[3],"home")==0||strcasecmp($url1[0],"home")==0){
-    //  if(strcasecmp($link,"http://192.168.2.102/PHP/vanetTransaction/Home")==0||strcasecmp($link,"http://192.168.2.102/PHP/vanetTransaction/Home/Search")==0||strcasecmp($link,"http://192.168.2.102/PHP/vanetTransaction/Home/InsertTransaction")==0||strcasecmp($link,"http://192.168.2.102/PHP/vanetTransaction/Home?resultado=Success")==0){ ?>
-   <li id="liName"> <p>Hola <?php echo $_SESSION['usuario']['name'] ?>!</p> </li>
+     $name = explode(" ",$_SESSION["usuario"]["name"]); ?>
+   <li id="liName"> <p>Hola <?php echo $name[0] ?>!</p> </li>
    <?php } else{ ?>
     <li id="liName"> <a href="<?php echo constant("URL") ?>Home"><i class="icon-back2"></i></a> </li>
    <?php } ?>
@@ -28,6 +28,7 @@
          <li><a href="<?php echo constant('URL')?>Users">Usuarios</a></li> 
         <?php } ?>
          <li><a href="<?php echo constant('URL')?>Controllers/logOut.php">Cerrar sesion</a></li>
+         <p id="pRol" style="display:none;"><?php echo $_SESSION['usuario']['rol']?></p>
          </ul>   
      </li>
 </ul>

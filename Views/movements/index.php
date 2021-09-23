@@ -85,6 +85,7 @@
     
 <script src="<?php echo constant("URL")?>public/js/jquery-3.6.0.min.js"></script>
 <script src="<?php echo constant("URL")?>public/js/menu.js"></script>
+<script src="<?php echo constant("URL")?>public/js/url.js"></script>
 <script src="<?php echo constant("URL")?>public/js/movement.js"></script>
 </body>
 </html>

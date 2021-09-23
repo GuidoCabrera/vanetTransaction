@@ -1,6 +1,6 @@
 <?php
-
 include_once 'usuarios.php';
+include_once 'modelFunctions.php';
 
 class usersModel extends model{
 
@@ -8,104 +8,56 @@ class usersModel extends model{
        parent::__construct();
    }
 
-  function getCurrentUser($id){
-      try{
-      $query = $this->db->connect();
-      $stmt = $query->prepare("SELECT * FROM usuario WHERE IdUsuario='$id'");
-      $stmt->execute();
+    function getCurrentUser($id){
+     $stmt = new modelFunctions();
+     $result = $stmt->getUsers("usuario","IdUsuario='$id'");
+     if($result!=false){
+       return $result;
+     }
+     else{ return false; }
+ }
 
-      $result = $stmt->fetch(PDO::FETCH_ASSOC);
+function getOthersUsers($id){
+  $stmt = new modelFunctions();
+     $result = $stmt->getUsers("usuario","IdUsuario!='$id'");
+     if($result!=false){
+       return $result;
+     }
+     else{ return false; }
+}
 
-      if($result!==false&&count($result)>0){
-            $usuario = new Usuario($result['IdUsuario'],$result['Nombre'],$result['Apellido'],$result['Contraseña'],$result['IdRol']); 
-      }
-      else{
-          $usuario = false;
-      }
-      return $usuario;
-    }
-    catch(PDOEXCEPTION $e){
-        print_r("Se ha producido un error: ".$e->getMessage());
-    }
+function getAllUsers(){
+  $stmt = new modelFunctions();
+  $result = $stmt->getAllUsers();
+  if($result!=false){
+    return $result;
   }
-
-  function getOthersUsers($id){
-      $users = [];
-    try{
-        $query = $this->db->connect();
-        $stmt = $query->prepare("SELECT * FROM usuario WHERE IdUsuario!='$id'");
-        $stmt->execute();
-  
-        while($result = $stmt->fetch(PDO::FETCH_ASSOC)){
-            $user = new Usuario($result['IdUsuario'],$result['Nombre'],$result['Apellido'],$result['Contraseña'],$result['IdRol']);
-            array_push($users,$user);
-          }
-        return $users;
-      }
-      catch(PDOEXCEPTION $e){
-          print_r("Se ha producido un error: ".$e->getMessage());
-      }
-  }
-
-  function getAllUsers(){
-    $users = [];
-    try{
-        $query = $this->db->connect();
-        $stmt = $query->prepare("SELECT * FROM usuario");
-        $stmt->execute();
-  
-        while($result = $stmt->fetch(PDO::FETCH_ASSOC)){
-            $user = new Usuario($result['IdUsuario'],$result['Nombre'],$result['Apellido'],$result['Contraseña'],$result['IdRol']);
-            array_push($users,$user);
-          }
-        return $users;
-      }
-      catch(PDOEXCEPTION $e){
-          print_r("Se ha producido un error: ".$e->getMessage());
-      }
-  }
+  else{ return false; }
+}
 
   public function createNewUser($nom,$ape,$contra,$rol){
-    try{
-     $query = $this->db->connect();
-     $stmt = $query->prepare('INSERT INTO USUARIO(NOMBRE,APELLIDO,CONTRASEÑA,IDROL) VALUES(:nombre,:apellido,:contra,:rol)');
-     $nom = ucfirst($nom);
-     $ape = ucfirst($ape);
-     $stmt->bindParam(":nombre",$nom);
-     $stmt->bindParam(":apellido",$ape);
-     $stmt->bindParam(":contra",$contra);
-     $stmt->bindParam(":rol",$rol,PDO::PARAM_INT);
-     $stmt->execute();
-     
-     return true;
-    }
-    catch(PDOEXCEPTION $e){
-      print_r("ha ocurrido un error:".$e->getMessage());
-      return false;
-    }
+          $values = [":nombre",":apellido",":contra",":rol"];
+          $param = [ucfirst($nom),ucfirst($ape),$contra,(int)$rol];
+          $stmt = new modelFunctions();
+          if($stmt->insert("INSERT INTO USUARIO(NOMBRE,APELLIDO,CONTRASEÑA,IDROL) VALUES",$values,$param)){
+              return true;
+          }
+         else{ return false; }
   }
 
   public function modifyUser($values){
     $atributes = ["Nombre","Apellido","Contraseña","IdRol"];
     try{
      $query = $this->db->connect();
-
      foreach($atributes as $element){
        $value = $values[$element];
        $stmt = $query->prepare("UPDATE usuario SET $element='$value' WHERE IdUsuario = :id");
        $stmt->bindParam(":id",$values["IdUsuario"],PDO::PARAM_INT);
        $stmt->execute();
      }
-        $stmt2 = $query->prepare("SELECT * FROM USUARIO WHERE idUsuario = :id");
-        $stmt2->bindParam(":id",$values["IdUsuario"],PDO::PARAM_INT);
-        $stmt2->execute();
-        $result = $stmt2->fetch(PDO::FETCH_ASSOC);
-
-        if($result!==false && $result!==null ){
-           $user = new Usuario($result["IdUsuario"],$result["Nombre"],$result["Apellido"],$result["Contraseña"],$result["IdRol"]);
-        }
-            return $user;
-    //  return true;
+        $stmt = new modelFunctions();
+        $result = $stmt->getUsers("usuario","idUsuario=".$values['IdUsuario']);
+        return $result;
     }
     catch(PDOEXCEPTION $e){
          printf("Ha surgido un error".$e->getMessage());
@@ -114,18 +66,11 @@ class usersModel extends model{
   }
 
   public function deleteUser($id){
-      try{
-          $query = $this->db->connect();
-          $stmt = $query->prepare("DELETE FROM usuario WHERE IdUsuario = :id");
-          $stmt->bindParam(":id",$id);
-          $stmt->execute();
-          return true;
-      }
-      catch(PDOEXCEPTION $e){
-        printf("Se ha producido un error:".$e->getMessage());
-        return false;
-      }
+    $stmt = new modelFunctions();
+    if($stmt->delete("usuario WHERE IdUsuario = '$id'")){
+        return true;
+    }
+    else{ return false; }
   }
-
 }
 ?>
