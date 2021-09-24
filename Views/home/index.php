@@ -119,7 +119,7 @@
           if($transactions["date"]==$date){
           ?>
         <tr>
-          <td><input type="checkbox" name="check-<?php echo $transactions["id"]; ?>" data-id="<?php echo $transactions["id"]; ?>"></td>
+          <td><input type="checkbox" autocomplete="off" name="check-<?php echo $transactions["id"]; ?>" data-id="<?php echo $transactions["id"]; ?>"></td>
           <td id="movement<?php echo $transactions["id"]; ?>"><?php echo $transactions["movement"]; ?></td>
           <td id="detail<?php echo $transactions["id"]; ?>"><?php echo $transactions["detail"]; ?></td>
           <td id="income<?php echo $transactions["id"]; ?>" class="income"><?php echo $transactions["income"]; ?></td>
@@ -134,7 +134,7 @@
         foreach($this->transacSearch as $transactions){
       ?>
       <tr>
-          <td><input type="checkbox" name="check-<?php echo $transactions["id"]; ?>" data-id="<?php echo $transactions["id"]; ?>"></td>
+          <td><input type="checkbox" autocomplete="off" name="check-<?php echo $transactions["id"]; ?>" data-id="<?php echo $transactions["id"]; ?>"></td>
           <td id="movement<?php echo $transactions["id"]; ?>"><?php echo $transactions["movement"]; ?></td>
           <td id="detail<?php echo $transactions["id"]; ?>"><?php echo $transactions["detail"]; ?></td>
           <td id="income<?php echo $transactions["id"]; ?>" class="income"><?php echo $transactions["income"]; ?></td>

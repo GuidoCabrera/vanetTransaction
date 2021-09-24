@@ -9,6 +9,5 @@ class view{
   function render($url){
       require 'Views/'.$url.'/index.php';
   }
-
 }
 ?>
