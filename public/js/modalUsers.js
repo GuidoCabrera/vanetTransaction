@@ -10,13 +10,14 @@ btn.addEventListener("click",function(){
         subMenu.removeAttribute("style");
         subMenu.classList.remove("desplegar");
     }
-    body.setAttribute("class","bg-theme noscroll");
-    containerModal.setAttribute("class","containerModal show");
-    modal.setAttribute("class","modal modalOpen");
+    setClass("modal modalOpen","containerModal show","bg-theme noscroll");
 });
 
-btnClose.addEventListener("click",function(){
-    modal.setAttribute("class","modal");
-    containerModal.setAttribute("class","containerModal");
-    body.setAttribute("class","bg-theme");
-});
+btnClose.addEventListener("click",function(){ 
+    setClass("modal","containerModal","bg-theme"); });
+
+function setClass(classModal,classCont,classBody){
+    modal.setAttribute("class",classModal);
+    containerModal.setAttribute("class",classCont);
+    body.setAttribute("class",classBody);
+}

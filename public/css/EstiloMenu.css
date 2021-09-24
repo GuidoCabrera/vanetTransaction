@@ -3,12 +3,7 @@ body{
     padding: 0;
 }
 .bg-theme{
-    /* background: url(../img/starliner.gif); */
     background: url(../img/blue-strped-circles.gif);
-    /* background: url(../img/discs.gif); */
-    /* background: url(../img/gunpowder-velvet.gif); */
-    /* background: url(../img/prim-walls.gif); */
-    /* background: url(../img/sapphire.gif); */
 }
  #menu{
     width: 100%;
@@ -70,8 +65,8 @@ body{
     background: #092327;
     z-index: 5;
     /* height: 0; */
-     max-height: 0;
-     transition: max-height 0.40s ease-out;
+    max-height: 0;
+    transition: max-height 0.35s ease-out;
     overflow: hidden;
 }
 

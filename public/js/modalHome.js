@@ -14,21 +14,12 @@ var selectMovement = document.getElementById("selectModifMov");
 var selectTransacMov = document.getElementById("selectMovement");
 var transactionsM = [[],[],[],[],[],[]];
 
-
-selected2 = (e) =>{
+   selected2 = (e) =>{
 
     if(e.target.checked){
-       var movement2 = document.getElementById("movement"+e.target.dataset.id);
-       var detail2 = document.getElementById("detail"+e.target.dataset.id);
-       var income2 = document.getElementById("income"+e.target.dataset.id);
-       var egress2 = document.getElementById("egress"+e.target.dataset.id);
-       var methodP2 = document.getElementById("methodP"+e.target.dataset.id);
-       transactionsM[0].push(movement2.textContent);
-       transactionsM[1].push(detail2.textContent);
-       transactionsM[2].push(income2.textContent);
-       transactionsM[3].push(egress2.textContent);
-       transactionsM[4].push(methodP2.textContent);
-       transactionsM[5].push(e.target.dataset.id);
+      let array = ["movement","detail","income","egress","methodP"];
+      for(var i=0;i<5;i++){ transactionsM[i].push(document.getElementById(array[i]+e.target.dataset.id).textContent); }
+      transactionsM[5].push(e.target.dataset.id);
     }
     else{
       removeArr2(transactionsM[0],transactionsM[1],transactionsM[2],transactionsM[3],transactionsM[4],transactionsM[5],e.target.dataset.id);
@@ -37,22 +28,14 @@ selected2 = (e) =>{
 
   function removeArr2(movement,detail,income,egress,methodP,arrayId,id){
     var y = arrayId.indexOf(id);
-    if(y!==-1){
-        movement.splice(y,1);
-        detail.splice(y,1);
-        income.splice(y,1);
-        egress.splice(y,1);
-        methodP.splice(y,1);
-        arrayId.splice(y,1);
-    }
+    let array = [movement,detail,income,egress,methodP,arrayId];
+    if(y!==-1){ array.forEach(element=>element.splice(y,1)); }
   }
 
   checkBox2.forEach((e)=>{
-    e.addEventListener("change",selected2);
-});
+    e.addEventListener("change",selected2); });
   
-
-btnModifyTransac.addEventListener("click",function(){
+  btnModifyTransac.addEventListener("click",function(){
 
     if(transactionsM[5].length==1){
     if(subMenu.classList.contains("desplegar")){
@@ -70,9 +53,7 @@ btnModifyTransac.addEventListener("click",function(){
      let optionsMethodP = getOptions(transactionsM[4],selectTransacMP);
     selectMethodPay.innerHTML += optionsMethodP;
 
-    body.setAttribute("class","noscroll");
-    containerModal.setAttribute("class","containerModalHome show");
-    modal.setAttribute("class","modalModifH modalOpen");
+    setClass("modalModifH modalOpen","containerModalHome show","noscroll");
     }
     else if(transactionsM[5].length==0){
       alert("No se ha seleccionado ninguna transaccion para modificar");
@@ -84,44 +65,31 @@ btnModifyTransac.addEventListener("click",function(){
 
 btnClose.addEventListener("click",function(){
     clearAll(pModif,selectMethodPay,selectMovement,inputsModif);
-    modal.setAttribute("class","modalModifH");
-    containerModal.setAttribute("class","containerModalHome");
-    body.removeAttribute("class");
+    setClass("modalModifH","containerModalHome","");
 });
 
 
 
 btnModify.addEventListener("click",function(){
-    let detailNoSpaces = inputsModif[0].value.replace(/ /g, "");
-    let entryNoSpaces = inputsModif[1].value.replace(/ /g, ""); 
-    let egressNoSpaces = inputsModif[2].value.replace(/ /g, ""); 
+    let arrayNoSpaces = [];
+    for(let i=0;i<3;i++){ arrayNoSpaces[i]=inputsModif[i].value.replace(/ /g, ""); }
     if(selectMovement.options[selectMovement.selectedIndex].textContent==transactionsM[0]&&selectMethodPay.options[selectMethodPay.selectedIndex].textContent==transactionsM[4]
-      &&(inputsModif[0].value==transactionsM[1]||detailNoSpaces=="")&&(inputsModif[1].value==transactionsM[2]||entryNoSpaces=="")&&(inputsModif[2].value==transactionsM[3]||egressNoSpaces=="")){
+      &&(inputsModif[0].value==transactionsM[1]||arrayNoSpaces[0]=="")&&(inputsModif[1].value==transactionsM[2]||arrayNoSpaces[1]=="")&&(inputsModif[2].value==transactionsM[3]||arrayNoSpaces[2]=="")){
       alert("No se ha realizado ninguna modificacion");
     }
     else{
       let array = [];
-      let detailModif = inputsModif[0].value;
-      let entryModif = entryNoSpaces;
-      let egressModif = egressNoSpaces;
+      let arrayValues = [];
+      arrayValues[0] = inputsModif[0].value;
+      for(let y=1;y<3;y++){ arrayValues[y]=arrayNoSpaces[y]; }
       let valueMovement = selectMovement.options[selectMovement.selectedIndex].textContent;
       let valuePayment = selectMethodPay.options[selectMethodPay.selectedIndex].textContent;
-      if(detailNoSpaces==""){
-        detailModif = transactionsM[1];
-      }
-      if(entryNoSpaces==""){
-         entryModif = transactionsM[2];
-      }
-      if(egressNoSpaces==""){
-         egressModif = transactionsM[3];
-      }
-       array.push(valueMovement,detailModif.toString(),entryModif.toString(),egressModif.toString(),valuePayment,transactionsM[5].toString());
-        // console.log(array);
+      for(let x=0;x<3;x++){ if(arrayValues[x]==""){ arrayValues[x]=transactionsM[1+x]; }}
+       array.push(valueMovement,arrayValues[0].toString(),arrayValues[1].toString(),arrayValues[2].toString(),valuePayment,transactionsM[5].toString());
        var param = JSON.stringify(array);
-        // console.log(param);
        $.ajax({
         type: 'POST',
-        url: 'http://192.168.2.102/PHP/vanetTransaction/home/modifyTransac',
+        url: constantURL+'home/modifyTransac',
         data: { ArrayJson: param},
         success: function(respa) {
            $("#respa2").html(respa);
@@ -141,22 +109,23 @@ function getOptions(value,select){
                options += `<option value="">`+value+`</option>`;
                options += `<option value="">`+select.options[i].textContent+`</option>`;
              }
-             else{
-               options += `<option value="">`+select.options[i].textContent+`</option>`;
-           }
+             else{ options += `<option value="">`+select.options[i].textContent+`</option>`; }
            }
       }
-      return options;
-}
+    return options; }
 
 function clearAll(pModif,selectMethodPay,selectMovement,inputs){
   let array = ["Movimiento: ","Detalle: ","Ingreso: ","Egreso: ","Medio de pago: "];
-   for(let i=0;i<pModif.length;i++){
-       pModif[i].innerHTML = array[i];
-}
- selectMethodPay.innerHTML = "";
- selectMovement.innerHTML = "";
+  for(let i=0;i<pModif.length;i++){ pModif[i].innerHTML = array[i]; }
+  selectMethodPay.innerHTML = "";
+  selectMovement.innerHTML = "";
   inputs.forEach((e)=>{
      e.value = "";
   });
+}
+
+function setClass(classModal,classCont,classBody){
+  modal.setAttribute("class",classModal);
+  containerModal.setAttribute("class",classCont);
+  body.setAttribute("class",classBody);
 }

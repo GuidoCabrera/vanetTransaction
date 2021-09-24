@@ -79,12 +79,7 @@
 
   </div>
   <!-- Cierre container Header -->
-  <?php  if(isset($this->msj)){
-  
-  ?>  <div id="containerMessage">
-  <p id="msj"><?php echo $this->msj; ?></p>
-  </div>
-  <?php }
+  <?php 
   if (isset($_GET['resultado'])){
     if($_GET['resultado']=="Success"){ 
    ?> <div id="containerMessage">
@@ -124,7 +119,7 @@
           if($transactions["date"]==$date){
           ?>
         <tr>
-          <td><input type="checkbox" name="check-<?php echo $transactions["id"]; ?>" data-id="<?php echo $transactions["id"]; ?>"></td>
+          <td><input type="checkbox" autocomplete="off" name="check-<?php echo $transactions["id"]; ?>" data-id="<?php echo $transactions["id"]; ?>"></td>
           <td id="movement<?php echo $transactions["id"]; ?>"><?php echo $transactions["movement"]; ?></td>
           <td id="detail<?php echo $transactions["id"]; ?>"><?php echo $transactions["detail"]; ?></td>
           <td id="income<?php echo $transactions["id"]; ?>" class="income"><?php echo $transactions["income"]; ?></td>
@@ -139,7 +134,7 @@
         foreach($this->transacSearch as $transactions){
       ?>
       <tr>
-          <td><input type="checkbox" name="check-<?php echo $transactions["id"]; ?>" data-id="<?php echo $transactions["id"]; ?>"></td>
+          <td><input type="checkbox" autocomplete="off" name="check-<?php echo $transactions["id"]; ?>" data-id="<?php echo $transactions["id"]; ?>"></td>
           <td id="movement<?php echo $transactions["id"]; ?>"><?php echo $transactions["movement"]; ?></td>
           <td id="detail<?php echo $transactions["id"]; ?>"><?php echo $transactions["detail"]; ?></td>
           <td id="income<?php echo $transactions["id"]; ?>" class="income"><?php echo $transactions["income"]; ?></td>
@@ -184,7 +179,7 @@
        <p>Movimiento</p>
        <select name="selectMovement" id="selectMovement">
        <?php foreach($this->movements as $movement){ ?>
-             <option value="<?php echo $movement["id"] ?>"><?php echo $movement["nombre"] ?></option>
+             <option value="<?php echo $movement["id"] ?>"><?php echo $movement["name"] ?></option>
        <?php } ?>
        </select>
      </div>
@@ -283,6 +278,7 @@
 <script src="<?php echo constant("URL")?>public/js/jquery-3.6.0.min.js"></script>
 <script src="<?php echo constant("URL")?>public/js/datepicker.js"></script>
 <script src="<?php echo constant("URL")?>public/js/menu.js"></script>
+<script src="<?php echo constant("URL")?>public/js/url.js"></script>
 <script src="<?php echo constant("URL")?>public/js/home.js"></script>
 <script src="<?php echo constant("URL")?>public/js/modalHome.js"></script>
 

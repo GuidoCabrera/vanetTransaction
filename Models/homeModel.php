@@ -1,6 +1,7 @@
 <?php
 
 include_once 'usuarios.php';
+include_once 'modelFunctions.php';
 
 class homeModel extends model{
    
@@ -8,89 +9,75 @@ class homeModel extends model{
       parent::__construct();
   }
   function getAllUsers(){
-      $users = [];
-      try{
-      $query = $this->db->connect();
-      $stmt = $query->prepare("SELECT * FROM usuario");
-      $stmt->execute();
-
-      while($result = $stmt->fetch(PDO::FETCH_ASSOC)){
-       $user = new Usuario($result["IdUsuario"],$result["Nombre"],$result["Apellido"],$result["Contraseña"],$result["IdRol"]);
-       array_push($users,$user);
-      }
-      return $users;
-      }
-      catch(PDOEXCEPTION $e){
-          printf("Ha ocurrido un error: ".$e->getMessage());
-          return false;
-      }
+    $stmt = new modelFunctions();
+    $result = $stmt->getAllUsers();
+    if($result!=false){
+      return $result;
+    }
+    else{ return false; }
   }
 
   function getAllMovements(){
-      $movements = [];
-      try{
-       $query = $this->db->connect();
-       $stmt = $query->prepare("SELECT * FROM movimiento");
-       $stmt->execute();
-
-       while($result = $stmt->fetch(PDO::FETCH_ASSOC)){
-            $movement = ["id"=>$result["IdMovimiento"],"nombre"=>$result["Nombre"]];
-            array_push($movements,$movement);
-       }
-       return $movements;
+    $stmt = new modelFunctions();
+    $result = $stmt->getAllMovements();
+      if($result!=false){
+        return $result;
       }
-      catch(PDOEXCEPTION $e){
-          printf("Ha ocurrido un error: ".$e->getMessage());
-          return false;
-      }
+      else{ return false; }
   }
 
   function insertTransaction($data){
-        //  echo $data["id"]."-".$date."-".$data["entry"]."-".$data["selectM"]."-".$data["egress"]."-".$data["selectP"]."-".$data["detail"];
-        try{
-           $query = $this->db->connect();
-           $stmt = $query->prepare("INSERT INTO TRANSACCION(FECHA,DETALLE,MEDIODEPAGO,INGRESO,EGRESO,IDUSUARIO,IDMOVIMIENTO) VALUES(:fec,:det,:mdp,:ing,:egr,:idU,:idM)");
-           $stmt->bindParam(":fec",$data["date"]);
-           $stmt->bindParam(":det",$data["detail"]);
-           $stmt->bindParam(":mdp",$data["selectP"]);
-           $stmt->bindParam(":ing",$data["entry"]);
-           $stmt->bindParam(":egr",$data["egress"]);
-           $stmt->bindParam(":idU",$data["id"]);
-           $stmt->bindParam(":idM",$data["selectM"]);
-           $stmt->execute();
-           return true;
-        }
-        catch(PDOEXCEPTION $e){
-            printf("Ha ocurrido un error:".$e->getMessage());
-            return false;
-        }
+          $values = [":fec",":det",":mdp",":ing",":egr",":idU",":idM"];
+          $param = [$data["date"],$data["detail"],$data["selectP"],$data["entry"],$data["egress"],$data["id"],$data["selectM"]];
+          $stmt = new modelFunctions();
+          if($stmt->insert("INSERT INTO TRANSACCION(FECHA,DETALLE,MEDIODEPAGO,INGRESO,EGRESO,IDUSUARIO,IDMOVIMIENTO) VALUES",$values,$param)){
+              return true;
+          }
+        else{ return false; }
   }
 
   function getNameMovement($id){
-      try{
-    $query = $this->db->connect();
-    $stmt2 = $query->prepare("SELECT Nombre FROM movimiento WHERE IdMovimiento = '$id'");
-    $stmt2->execute();
-
-    $result = $stmt2->fetch(PDO::FETCH_ASSOC);
+    $stmt = new modelFunctions();
+    $result = $stmt->getElement("SELECT Nombre FROM movimiento WHERE IdMovimiento = '$id'");
     if($result!=false){
     return $result;
     }
-    else{
-      return false;
-    }
-    }
-    catch(PDOEXCEPTION $e){
-        printf("Ha ocurrido un error: ".$e->getMessage());
-        return false;
-    }
+    else{ return false; }    
+  }
+
+  function getNameUser($id){
+    $stmt = new modelFunctions();
+      $result = $stmt->getElement("SELECT Nombre FROM USUARIO WHERE IdUsuario = '$id'");
+      if($result!=false){
+      return $result; 
+      }
+      else{ return false; }  
   }
 
   function getAllTransaction(){
-    $transac = [];
+  $result = $this->getTransaction("SELECT * FROM TRANSACCION");
+  if($result!=false){
+    return $result;
+  }
+  else{ return false; }
+}
+
+function getSearch($date,$idUser){
+   if($idUser=="All"){
+     $result = $this->getTransaction("SELECT * FROM TRANSACCION WHERE Fecha='$date'");
+    return $result;
+     }
+   else{
+    $result = $this->getTransaction("SELECT * FROM TRANSACCION WHERE Fecha='$date' AND IdUsuario='$idUser'");
+    return $result;
+}
+}
+
+function getTransaction($stmt){
+  $transac = [];
     try{
     $query = $this->db->connect();
-    $stmt = $query->prepare("SELECT * FROM TRANSACCION");
+    $stmt = $query->prepare("$stmt");
     $stmt->execute();
 
     while($result = $stmt->fetch(PDO::FETCH_ASSOC)){
@@ -113,130 +100,29 @@ class homeModel extends model{
   }
 }
 
-function getSearch($date,$idUser){
-  $transac = [];
-   try{
-     $query = $this->db->connect();
-     if($idUser=="All"){
-     $stmt = $query->prepare("SELECT * FROM TRANSACCION WHERE Fecha=:fecha");
-     $stmt->bindParam(":fecha",$date);
-     $stmt->execute();
-
-     while ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
-      $nameMovement = $this->getNameMovement($result["IdMovimiento"]);
-      $nameUser = $this->getNameUser($result["IdUsuario"]);
-      if($nameMovement!=false){
-      $transaction = ["id"=>$result["IdTransaccion"],"movement"=>$nameMovement["Nombre"],"date"=>$result["Fecha"],"detail"=>$result["Detalle"],"methodP"=>$result["MedioDePago"],"income"=>$result["Ingreso"],"egress"=>$result["Egreso"],"user"=>$result["IdUsuario"],"nameUser"=>$nameUser["Nombre"]];
-      array_push($transac,$transaction);
-    }
-    else{
-        printf("Ha ocurrido un error");
-        return false;
-    }
-     }
-     return $transac;
-    }
-
-    else{
-       $stmt = $query->prepare("SELECT * FROM TRANSACCION WHERE Fecha=:fecha AND IdUsuario=:id");
-       $stmt->bindParam(":fecha",$date);
-       $stmt->bindParam(":id",$idUser);
-       $stmt->execute();
-    
-       while ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        $nameMovement = $this->getNameMovement($result["IdMovimiento"]);
-        $nameUser = $this->getNameUser($result["IdUsuario"]);
-        if($nameMovement!=false){
-        $transaction = ["id"=>$result["IdTransaccion"],"movement"=>$nameMovement["Nombre"],"date"=>$result["Fecha"],"detail"=>$result["Detalle"],"methodP"=>$result["MedioDePago"],"income"=>$result["Ingreso"],"egress"=>$result["Egreso"],"user"=>$result["IdUsuario"],"nameUser"=>$nameUser["Nombre"]];
-        array_push($transac,$transaction);
-      }
-      else{
-          printf("Ha ocurrido un error");
-          return false;
-      }
-       }
-       return $transac;
-    }
-   }
-   catch(PDOEXCEPTION $e){
-     printf("Ha ocurrido un error: ".$e->getMessage());
-     return false;
-   }
-}
-
-function getNameUser($id){
-  try{
-        $query = $this->db->connect();
-        $stmt = $query->prepare("SELECT Nombre FROM USUARIO WHERE IdUsuario = '$id'");
-        $stmt->execute();
-
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        if($result!=false){
-          return $result;
-        }
-        else{
-          return false;
-        }
-  }
-  catch(PDOEXCEPTION $e){
-    printf("Ha ocurrido un error: ".$e->getMessage());
-    return false;
-  }
-}
-
 function getTransactionForUser($id){
-   $transac = [];
-  try{
-       $query = $this->db->connect();
-       $stmt = $query->prepare("SELECT * FROM TRANSACCION WHERE IdUsuario = '$id' ");
-       $stmt->execute();
-
-       while($result = $stmt->fetch(PDO::FETCH_ASSOC)){
-        $nameMovement = $this->getNameMovement($result["IdMovimiento"]);
-        $nameUser = $this->getNameUser($result["IdUsuario"]);
-        if($nameMovement!=false){
-        $transaction = ["id"=>$result["IdTransaccion"],"movement"=>$nameMovement["Nombre"],"date"=>$result["Fecha"],"detail"=>$result["Detalle"],"methodP"=>$result["MedioDePago"],"income"=>$result["Ingreso"],"egress"=>$result["Egreso"],"user"=>$result["IdUsuario"],"nameUser"=>$nameUser["Nombre"]];
-        array_push($transac,$transaction);
-        }
-        else{
-          printf("Ha ocurrido un error");
-          return false;
-      }
-  }
-  return $transac;
-  }
-  catch(PDOEXCEPTION $e){
-     printf("Ha ocurrido un error: ".$e->getMessage());
-     return false;
-  }
+  $result = $this->getTransaction("SELECT * FROM TRANSACCION WHERE IdUsuario='$id'");
+    if($result!=false){
+      return $result;
+    }
+    else{ return false; }
 }
 
 function deleteTransac($ids){
-  try{
-     $query = $this->db->connect();
-     $stmt = $query->prepare("DELETE FROM TRANSACCION WHERE IdTransaccion IN($ids)");
-     $stmt->execute();
-     return true;
-  }
-  catch(PDOEXCEPTION $e){
-    printf("Ha ocurrido un error: ".$e->getMessage());
-    return false;
-  }
+    $stmt = new modelFunctions();
+    if($stmt->delete("TRANSACCION WHERE IdTransaccion IN($ids)")){
+        return true;
+    }
+    else{ return false; }
 }
 
 function getIdMovement($name){
-  try{
-  $query = $this->db->connect();
-  $stmt2 = $query->prepare("SELECT IdMovimiento FROM movimiento WHERE Nombre='$name'");
-  $stmt2->execute();
-
-  $result = $stmt2->fetch(PDO::FETCH_ASSOC);
-  return $result;
-  }
-  catch(PDOEXCEPTION $e){
-      printf("Ha ocurrido un error: ".$e->getMessage());
-      return false;
-  }
+  $stmt = new modelFunctions();
+      $result = $stmt->getElement("SELECT IdMovimiento FROM movimiento WHERE Nombre='$name'");
+      if($result!=false){
+      return $result; 
+      }
+      else{ return false; } 
 }
 
 function modifyTransac($array){
@@ -263,9 +149,7 @@ function modifyTransac($array){
        }
         }
         else{
-          echo "<script type='text/javascript'>
-                  window.location.href='http://192.168.2.102/PHP/vanetTransaction/Users';
-                </script>";
+          return false;
         }
       return true;
    }
@@ -275,62 +159,24 @@ function modifyTransac($array){
 }
 
 function verifyExistUser($getId){
-   try{
-      $query = $this->db->connect();
-      $stmt = $query->prepare("SELECT * FROM usuario WHERE IdUsuario='$getId'");
-      $stmt->execute();
-
-      $result = $stmt->fetch(PDO::FETCH_ASSOC);
-      if($result==false||$result==null){
-        return false;
-      }
-      else{
-        return true;
-      }
-   }
-   catch(PDO_EXCEPTION $e){
-     printf("Ha ocurrido un error: ".$e->getMessage());
-   }
+      $stmt = new modelFunctions();
+      $result = $stmt->verifyExist("SELECT * FROM usuario WHERE IdUsuario='$getId'");
+      if($result){ return $result; }
+      else{ return false; } 
 }
 
 function verifyExistDate($getDate){
-  try{
-     $query = $this->db->connect();
-     $stmt = $query->prepare("SELECT * FROM transaccion WHERE Fecha='$getDate'");
-     $stmt->execute();
-
-     $result = $stmt->fetch(PDO::FETCH_ASSOC);
-     if($result==false||$result==null){
-       return false;
-     }
-     else{
-       return true;
-     }
-  }
-  catch(PDO_EXCEPTION $e){
-    printf("Ha ocurrido un error: ".$e->getMessage());
-  }
+  $stmt = new modelFunctions();
+      $result = $stmt->verifyExist("SELECT * FROM transaccion WHERE Fecha='$getDate'");
+      if($result){ return $result; }
+      else{ return false; } 
 }
 
 function verifyExistDateWithUser($getDate,$idUser){
-  try{
-     $query = $this->db->connect();
-     $stmt = $query->prepare("SELECT * FROM transaccion WHERE Fecha='$getDate' AND IdUsuario='$idUser'");
-     $stmt->execute();
-
-     $result = $stmt->fetch(PDO::FETCH_ASSOC);
-     if($result==false||$result==null){
-       return false;
-     }
-     else{
-       return true;
-     }
-  }
-  catch(PDO_EXCEPTION $e){
-    printf("Ha ocurrido un error: ".$e->getMessage());
-  }
+  $stmt = new modelFunctions();
+      $result = $stmt->verifyExist("SELECT * FROM transaccion WHERE Fecha='$getDate' AND IdUsuario='$idUser'");
+      if($result){ return $result; }
+      else{ return false; } 
 }
-
 }
-
 ?>

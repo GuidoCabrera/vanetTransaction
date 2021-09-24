@@ -23,20 +23,13 @@ class login extends controller{
             $name = $_POST['name'];
             $pass = $_POST['password'];
             $result = $this->model->getByName($name,$pass);
-            if($result){
-                header("Location:".constant('URL')."Home");
-            }
+            if($result){ header("Location:".constant('URL')."Home"); }
             else{
                 $this->view->msj = "No hay ningun usuario registrado con estas credenciales";
                 $this->render('');
             }
         }
-        else{
-          header("location:".constant('URL')."errorP"); 
-        }
+        else{ header("location:".constant('URL')."errorP"); }
     }
-
 }
-
-
 ?>

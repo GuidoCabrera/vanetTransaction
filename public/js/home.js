@@ -32,7 +32,7 @@ window.onload = function(){
     optionsSelectPay.forEach(element => {
         element.value = element.textContent;
     });
-    
+
       if(msj==""||msj==null){
       }
       else{
@@ -127,9 +127,7 @@ $('#date').datetimepicker({
       if(i!==transactions[0].length-1){
           txtTransac += "Movimiento: '"+transactions[0][i]+"', Detalle: '"+transactions[1][i]+"',"; 
       }
-      else{
-          txtTransac += "Movimiento: '"+transactions[0][i]+"', Detalle: '"+transactions[1][i]+"'";
-      }
+      else{ txtTransac += "Movimiento: '"+transactions[0][i]+"', Detalle: '"+transactions[1][i]+"'"; }
     }
 
     if(txtTransac!==""){
@@ -140,7 +138,7 @@ $('#date').datetimepicker({
           //  console.log(valParam);
              $.ajax({
                 type: 'POST',
-                url: 'http://192.168.2.102/PHP/vanetTransaction/home/deleteTransac',
+                url: constantURL+'home/deleteTransac',
                 data: { tuArrJson: valParam},
                 success: function(resp){
                    $("#respa").html(resp);

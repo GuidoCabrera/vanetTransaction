@@ -40,10 +40,6 @@ window.onload = function(){
   }
 }
 
-//  function changeTxt(){
-//   return () => msj.textContent= "";
-// }
-
 //Permitiendo escritura en los input de modificacion
 btnModif.addEventListener("click", function(){
     inputs.forEach((input) => {
@@ -94,7 +90,7 @@ if(aux2){
 
   $.ajax({
     type:'post',
-    url: 'http://192.168.2.102/PHP/vanetTransaction/Users/deleteUser',
+    url: constantURL+'Users/deleteUser',
     data: dataex,
     success: function(resp){
       $("#respa").html(resp);

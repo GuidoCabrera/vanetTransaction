@@ -8,14 +8,11 @@ class controller{
 
  function loadModel($name){
       $url = "Models/".$name."Model.php";
-
       if(file_exists($url)){
-
-          require $url;
+        require $url;
         $modelName = $name."Model";
         $this->model = new $modelName();
       }
  }
-
 }
 ?>
