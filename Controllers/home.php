@@ -126,15 +126,9 @@ class home extends controller{
             $arrayModif = json_decode($_REQUEST['ArrayJson']);       
             $array = array("Movimiento"=>$arrayModif[0],"Detalle"=>$arrayModif[1],"Ingreso"=>$arrayModif[2],"Egreso"=>$arrayModif[3],"MedioDePago"=>$arrayModif[4],"IdTransaccion"=>$arrayModif[5]);
              if($this->model->modifyTransac($array)){
-                echo "<script type='text/javascript'>
-                window.location.reload();
-              </script>";
+                $this->Message('',constant("URL")."Home");
              }
-              else{
-                echo "<script type='text/javascript'>
-                window.location.href = '".constant("URL")."ErrorP';
-              </script>";
-              }           
+             else{ $this->Message('',constant("URL")."ErrorP"); }           
         }
     }
 }

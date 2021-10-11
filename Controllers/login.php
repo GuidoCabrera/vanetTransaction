@@ -12,7 +12,6 @@ class login extends controller{
         header('Location:'.constant('URL').'home');
       }
       else{
-        // session_unset();
         session_destroy();
         $this->view->render('login');
       }

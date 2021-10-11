@@ -50,6 +50,3 @@ btnModify.addEventListener("click",function(){
     }
 
 });
-
-
-

@@ -10,8 +10,7 @@ class users extends controller{
     function render(){
         session_start();
         if(isset($_SESSION['usuario']['name'])&&isset($_SESSION['usuario']['rol'])&&$_SESSION['usuario']['rol']==1){
-            // var_dump($_SESSION['usuario']['time']);
-            // var_dump(time());
+    
             if((time() - $_SESSION['usuario']['time']) > 1800) // 900 = 15 * 60  
            {  
                 header("location:".constant('URL')."/Controllers/logOut.php");  
@@ -86,24 +85,12 @@ class users extends controller{
             session_start();
              if($_POST["id"]!=$_SESSION['usuario']['id']){
               if($this->model->deleteUser($_POST["id"])){
-                 echo "<script type='text/javascript'>  
-                 alert('Usuario eliminado con exito');
-                  window.location.href = '".constant("URL")."Users';
-                 </script>"; 
+                $this->Message('Usuario eliminado con exito',constant("URL")."Users");
                  }
-              else{
-                 echo "<script type='text/javascript'>  
-                 alert('Ha ocurrido un error al eliminar el usuario, vuelva a intentar mas tarde');
-                 window.location.href = '".constant("URL")."Users';
-                 </script>"; 
-              }
+              else{ $this->Message('Ha ocurrido un error al eliminar el usuario, vuelva a intentar mas tarde',constant("URL")."Users"); }
              }
-             else{
-                     echo "<script type='text/javascript'>  
-                 alert('El usuario esta iniciado sesion, no se puede eliminar');
-                 </script>"; 
-                 }
-             }
+             else{ $this->Message('El usuario esta iniciado sesion, no se puede eliminar'); }
+        }
      }
 
 }
