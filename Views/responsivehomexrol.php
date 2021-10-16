@@ -33,33 +33,10 @@
         font-size: 18px;
     }
     #containerFooter form #inputGroup .inputBox input{
-        width: 90%;
         padding-left: 10px;
-    }
-    #containerFooter form #inputGroup .inputBox input::placeholder{
-        font-size: 13px;
     }
     #containerHeader #containerChange #icons{
         margin-top: 110px;
-    }
-    #containerFooter form #inputGroup .inputBox select{
-        width: 69%;
-     }
-     #containerFooter form #inputGroup .inputBox #selectPayment{
-        width: 230px;
-     }
-     #tableBox{
-        width: 99%;
-    }
-    #btnBox{
-        left: 86%;
-    }
-    #containerFooter form #inputGroup .inputBox:nth-child(odd) p{
-        margin-right: 100px;
-    }
-    #containerFooter form #inputGroup .inputBox:nth-child(5) p{
-        margin: 15px 0;
-        text-align: center;
     }
    }
    @media(max-width:529px) and (min-width:370px){
@@ -224,32 +201,9 @@ else if($_SESSION["usuario"]["rol"]==2){
 ?>
 <style>
   @media(max-width:599px) and (min-width:530px){
-    #containerFooter form #inputGroup .inputBox input{
-        width: 90%;
+     #containerFooter form #inputGroup .inputBox input{
         padding-left: 15px;
-    }
-    #containerFooter form #inputGroup .inputBox input::placeholder{
-        font-size: 13px;
-    }
-    #containerFooter form #inputGroup .inputBox select{
-        width: 69%;
-     }
-     #containerFooter form #inputGroup .inputBox #selectPayment{
-        width: 230px;
-     }
-     #tableBox{
-        width: 99%;
-    }
-    #btnBox{
-        left: 86%;
-    }
-    #containerFooter form #inputGroup .inputBox:nth-child(odd) p{
-        margin-right: 100px;
-    }
-    #containerFooter form #inputGroup .inputBox:nth-child(5) p{
-        margin: 15px 0;
-        text-align: center;
-    }
+    } 
   }
   @media(max-width:529px) and (min-width:370px){
     #containerHeader #containerChange #icons{
