@@ -11,12 +11,24 @@ btn.addEventListener("click",function(){
     }
     else{
         subMenu.classList.add("desplegar");
+        let tam = window.innerWidth;
         if(rol.textContent==1){
-        subMenu.style.maxHeight = "181px";
+           if(tam<=528){
+              subMenu.style.maxHeight = "200px";
+            }
+           else{
+              subMenu.style.maxHeight = "181px";
+            }
         }
         else{
-        subMenu.style.maxHeight = "61px";
-        subMenu.style.transition = "max-height 0.20s ease-out";
+            if(tam<=528){
+                subMenu.style.maxHeight = "70px";
+                subMenu.style.transition = "max-height 0.13s ease-out";
+              }
+            else{
+                subMenu.style.maxHeight = "61px";
+                subMenu.style.transition = "max-height 0.20s ease-out";
+              }
         }
         subMenu.style.height = "auto";
         subMenu.style.zIndex = "3";

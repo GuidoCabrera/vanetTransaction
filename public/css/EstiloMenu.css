@@ -64,7 +64,6 @@ body{
     padding: 0;
     background: #092327;
     z-index: 5;
-    /* height: 0; */
     max-height: 0;
     transition: max-height 0.35s ease-out;
     overflow: hidden;
