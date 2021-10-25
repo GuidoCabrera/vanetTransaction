@@ -56,7 +56,8 @@
     <?php } else{ ?>
     <option value="<?php echo $this->idUserSelected; ?>"><?php echo $userSelected["Nombre"]; ?></option>
     <option value="All">Todos</option>
-    <?php } foreach($this->users as $user) { 
+    <?php } 
+    foreach($this->users as $user) { 
       if($user->getId2()!=$this->idUserSelected){ ?>
     <option value="<?php $user->getId(); ?>"><?php $user->getNombre(); ?></option>
     <?php  } } ?>
@@ -205,12 +206,12 @@
        <option value="">Mercado pago</option>
        </select>
      </div>
-     <?php if(isset($_GET["date"])&&isset($_GET["users"])&&$_SESSION["usuario"]["rol"]==1){ ?>
-      <input type="text" value="<?php echo $_GET["date"] ?>" name="dateFooter" id="dateFooter">
-      <input type="text" value="<?php echo $_GET["users"] ?>" name="userFooter" id="userFooter">
+      <?php if(isset($_GET["date"])&&isset($_GET["users"])&&$_SESSION["usuario"]["rol"]==1){ ?>
+        <input type="text" value="<?php echo $_GET["date"] ?>" name="dateFooter" id="dateFooter">
+        <input type="text" value="<?php echo $_GET["users"] ?>" name="userFooter" id="userFooter">
       <?php } ?>
       <?php if(isset($_GET["date"])&&$_SESSION["usuario"]["rol"]==2){ ?>
-      <input type="text" value="<?php echo $_GET["date"] ?>" name="dateFooter" id="dateFooter">
+        <input type="text" value="<?php echo $_GET["date"] ?>" name="dateFooter" id="dateFooter">
       <?php } ?>
 
        <div id="btnBox">
@@ -238,8 +239,6 @@
       <div class="inputBox">
       <p id="pMov">Movimiento: </p>
       <select name="modifMov" id="selectModifMov">
-        <!-- <option value="1">1</option>
-        <option value="2">2</option> -->
       </select>
       </div>
 
@@ -263,6 +262,14 @@
        <select name="modifySelectPayment" id="modifySelectPayment">
        </select>
       </div>
+
+      <?php if(isset($_GET["date"])&&isset($_GET["users"])&&$_SESSION["usuario"]["rol"]==1){ ?>
+         <input type="text" value="<?php echo $_GET["date"] ?>" name="dateFooter" id="dateFooter">
+         <input type="text" value="<?php echo $_GET["users"] ?>" name="userFooter" id="userFooter">
+      <?php } ?>
+      <?php if(isset($_GET["date"])&&$_SESSION["usuario"]["rol"]==2){ ?>
+         <input type="text" value="<?php echo $_GET["date"] ?>" name="dateFooter" id="dateFooter">
+      <?php } ?>
 
       <div id="btnBoxModify">
      <button type="button" id="btnCloseModify">Cerrar</button>

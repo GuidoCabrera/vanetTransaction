@@ -3,6 +3,7 @@ require_once 'Controllers/errorP.php';
 class app{
 
 function __construct(){
+
      $url = isset($_GET['url']) ?$_GET['url'] :null;
      $url = rtrim($url,"/");
      $url = explode("/",$url);

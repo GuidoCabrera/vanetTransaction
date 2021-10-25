@@ -8,7 +8,7 @@ class usersModel extends model{
        parent::__construct();
    }
 
-    function getCurrentUser($id){
+function getCurrentUser($id){
      $stmt = new modelFunctions();
      $result = $stmt->getUsers("usuario","IdUsuario='$id'");
      if($result!=false){
@@ -16,15 +16,6 @@ class usersModel extends model{
      }
      else{ return false; }
  }
-
-function getOthersUsers($id){
-  $stmt = new modelFunctions();
-     $result = $stmt->getUsers("usuario","IdUsuario!='$id'");
-     if($result!=false){
-       return $result;
-     }
-     else{ return false; }
-}
 
 function getAllUsers(){
   $stmt = new modelFunctions();

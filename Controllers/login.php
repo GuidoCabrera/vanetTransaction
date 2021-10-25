@@ -19,9 +19,8 @@ class login extends controller{
 
    public function Access(){
         if(isset($_POST['name'])&&isset($_POST['password'])){
-            $name = $_POST['name'];
-            $pass = $_POST['password'];
-            $result = $this->model->getByName($name,$pass);
+          //Funcion que verifica que el nombre y contraseña sean coincidentes
+            $result = $this->model->getByName($_POST['name'],$_POST['password']);
             if($result){ header("Location:".constant('URL')."Home"); }
             else{
                 $this->view->msj = "No hay ningun usuario registrado con estas credenciales";

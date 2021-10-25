@@ -1,7 +1,5 @@
 html,body{
      height: 100vh; 
-     /* background: linear-gradient(#9e5e31,#a8352c); 
-     overflow: auto; */
 }
 
 #containerUser{
@@ -55,19 +53,7 @@ html,body{
     text-align: center;
 }
 
-/* #containerHeader #containerChange #icons a{
-    text-decoration: none;
-    position: absolute;
-    height: 100%;
-    width: 45px;
-    border-radius: 5px;
-    padding-top: 5px;
-    box-sizing: border-box;
-    text-align: center;
-} */
-
 #containerHeader #containerChange #icons a:nth-child(1){
-    box-sizing: border-box;
     padding-top: 7px;
     left: 0;
 }
@@ -289,11 +275,6 @@ html,body{
  .modalOpen{
     transform: translateY(0%);
  }
- 
-
- /* .modal-close{
-    transform: translateY(-200%);
- } */
 
  .modal h2{
     font-family: 'Roboto Condensed', sans-serif;
@@ -417,10 +398,6 @@ html,body{
     margin-top: 15px;
     left: 82%;
 }
-/*
-#containerFooter form #inputGroup .inputBox:nth-child(1) p{
-    margin-left: 35px;
-} */
 }
 
 @media(max-width:599px) and (min-width:530px){

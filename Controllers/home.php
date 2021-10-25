@@ -13,9 +13,7 @@ class home extends controller{
     function render(){
         session_start();
         if(isset($_SESSION['usuario']['name'])&&isset($_SESSION['usuario']['rol'])){
-            // var_dump($_SESSION['user']['time']);
-            // var_dump(time());
-           if((time() - $_SESSION['usuario']['time']) > 1800) // 900 = 15 * 60  
+           if((time() - $_SESSION['usuario']['time']) > 1800) // 900 = 15minutos * 60segundos  
            { header("location:".constant('URL')."/Controllers/logOut.php"); } 
            else{
             $_SESSION['usuario']['time'] = time(); 
@@ -40,21 +38,22 @@ class home extends controller{
     function insertTransaction(){
         if(isset($_POST["selectMovement"])&&isset($_POST["entry"])&&isset($_POST["egress"])&&isset($_POST["detail"])&&isset($_POST["selectPayment"])){
             session_start();
+            //condicional por si esta seleccionado alguna fecha especifica
             if(isset($_POST["dateFooter"])){
-            $value = $this->model->insertTransaction(["id"=>$_SESSION["usuario"]["id"],"date"=>$_POST["dateFooter"],"selectM"=>$_POST["selectMovement"],"entry"=>$_POST["entry"],"egress"=>$_POST["egress"],"detail"=>$_POST["detail"],"selectP"=>$_POST["selectPayment"]]);
+             $value = $this->model->insertTransaction(["id"=>$_SESSION["usuario"]["id"],"date"=>$_POST["dateFooter"],"selectM"=>$_POST["selectMovement"],"entry"=>$_POST["entry"],"egress"=>$_POST["egress"],"detail"=>$_POST["detail"],"selectP"=>$_POST["selectPayment"]]);
             }
             else{
-            $today = getdate();
-            $date = $today["year"]."-".$today["mon"]."-".$today["mday"];
-            $value = $this->model->insertTransaction(["id"=>$_SESSION["usuario"]["id"],"date"=>$date,"selectM"=>$_POST["selectMovement"],"entry"=>$_POST["entry"],"egress"=>$_POST["egress"],"detail"=>$_POST["detail"],"selectP"=>$_POST["selectPayment"]]);
-           }
+             $today = getdate();
+             $date = $today["year"]."-".$today["mon"]."-".$today["mday"];
+             $value = $this->model->insertTransaction(["id"=>$_SESSION["usuario"]["id"],"date"=>$date,"selectM"=>$_POST["selectMovement"],"entry"=>$_POST["entry"],"egress"=>$_POST["egress"],"detail"=>$_POST["detail"],"selectP"=>$_POST["selectPayment"]]);
+            }
            if($value){
-            if($_SESSION["usuario"]["rol"]==1){
-            $link = "home/Search?date=".$_POST["dateFooter"]."&users=".$_POST["userFooter"];
-            }
-            else{
-            $link = "home/Search?date=".$_POST["dateFooter"];
-            }
+             if($_SESSION["usuario"]["rol"]==1){
+                $link = "home/Search?date=".$_POST["dateFooter"]."&users=".$_POST["userFooter"];
+             }
+             else{
+                $link = "home/Search?date=".$_POST["dateFooter"];
+             }
             session_abort();
             header("location:".constant('URL').$link);
            }
@@ -109,7 +108,9 @@ class home extends controller{
 
     function deleteTransac(){
         if(isset($_REQUEST["tuArrJson"])){
+            //decodificando el array enviado por ajax
             $param = json_decode($_REQUEST['tuArrJson']);
+            //creando array con identificador para borrado
             $param2 = implode(",",$param);
             
             if($this->model->deleteTransac($param2)){   
@@ -126,10 +127,13 @@ class home extends controller{
             $arrayModif = json_decode($_REQUEST['ArrayJson']);       
             $array = array("Movimiento"=>$arrayModif[0],"Detalle"=>$arrayModif[1],"Ingreso"=>$arrayModif[2],"Egreso"=>$arrayModif[3],"MedioDePago"=>$arrayModif[4],"IdTransaccion"=>$arrayModif[5]);
              if($this->model->modifyTransac($array)){
-                $this->Message('',constant("URL")."Home");
+              echo "<script type='text/javascript'>
+                window.location.reload();
+              </script>";
              }
              else{ $this->Message('',constant("URL")."ErrorP"); }           
         }
+        else{ $this->Message('',constant("URL")."ErrorP"); } 
     }
 }
 ?>

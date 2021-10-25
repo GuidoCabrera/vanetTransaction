@@ -26,9 +26,10 @@
 		<div class="error-message">
 			<p id="title">¡HA OCURRIDO UN ERROR!</p>
 			<p id="message">Lamentablemente el recurso no ha llegado a su destino exitosamente</p>
-			<p id="small">Para volver a la pagina principal haga click <a href="<?php echo constant("URL") ?>Home">AQUÍ</a>
-
-	</div>
+			<p id="small">Para volver a la pagina principal haga click <a href="<?php echo constant("URL")?>Home">AQUÍ</a>
+	    </div>
+        
+</div>
 
 <script src="<?php echo constant("URL")?>public/js/jquery-3.6.0.min.js"></script>
 </body>

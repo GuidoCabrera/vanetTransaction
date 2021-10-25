@@ -11,7 +11,7 @@ class users extends controller{
         session_start();
         if(isset($_SESSION['usuario']['name'])&&isset($_SESSION['usuario']['rol'])&&$_SESSION['usuario']['rol']==1){
     
-            if((time() - $_SESSION['usuario']['time']) > 1800) // 900 = 15 * 60  
+            if((time() - $_SESSION['usuario']['time']) > 1800) // 900segundos = 15minutos * 60segundos  
            {  
                 header("location:".constant('URL')."/Controllers/logOut.php");  
            } 
@@ -19,12 +19,11 @@ class users extends controller{
             $_SESSION['usuario']['time'] = time(); 
             if(!isset($_POST["id"])){
                 $datos = $this->model->getCurrentUser($_SESSION['usuario']['id']);
-                // $datos2 = $this->model->getOthersUsers($_SESSION['usuario']['id']);
                 $this->view->usuarioActual = $datos;
                 $datos2 = $this->model->getAllUsers();
                 $this->view->usuarios = $datos2;
                 $this->view->render("Users");
-              }
+            }
            }
         }
         else if(isset($_SESSION['usuario']['name'])&&isset($_SESSION['usuario']['rol'])&&$_SESSION['usuario']['rol']==2){
