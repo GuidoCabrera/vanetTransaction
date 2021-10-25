@@ -42,34 +42,34 @@ class modelFunctions extends model{
      
               return true;
              }
-             catch(PDOEXCEPTION $e){
-                 printf("Connection Failed: ".$e->getMessage());
-                 return false;
-             }
+          catch(PDOEXCEPTION $e){
+              printf("Connection Failed: ".$e->getMessage());
+              return false;
+          }
       }
 
     public function getUsers($table,$condition){
         $users = [];
         try{
-        $query = $this->db->connect();
-        $sql = $query->prepare("SELECT * FROM $table WHERE $condition");
-        $sql->execute();
+           $query = $this->db->connect();
+           $sql = $query->prepare("SELECT * FROM $table WHERE $condition");
+           $sql->execute();
 
-        while($result = $sql->fetch(PDO::FETCH_ASSOC)){
+         while($result = $sql->fetch(PDO::FETCH_ASSOC)){
             $user = new Usuario($result['IdUsuario'],$result['Nombre'],$result['Apellido'],$result['Contraseña'],$result['IdRol']);
             array_push($users,$user);
-          }
-          if(count($users)==1){
-              return $user;
-          }
-          else if(count($users)>1){
+         }
+         if(count($users)==1){
+             return $user;
+         }
+         else if(count($users)>1){
              return $users;
          }
        }
 
        catch(PDOEXCEPTION $e){
-        printf("Connection Failed: ".$e->getMessage());
-        return false;
+         printf("Connection Failed: ".$e->getMessage());
+         return false;
        }
     }
 
@@ -94,21 +94,21 @@ class modelFunctions extends model{
     public function getAllMovements()
     {
         try{
-        $array = [];
-        $query = $this->db->connect();
-        $sql = $query->prepare("SELECT * FROM MOVIMIENTO");
-        $sql->execute(); 
+          $array = [];
+          $query = $this->db->connect();
+          $sql = $query->prepare("SELECT * FROM MOVIMIENTO");
+          $sql->execute(); 
 
-        while($result = $sql->fetch(PDO::FETCH_ASSOC)){
+          while($result = $sql->fetch(PDO::FETCH_ASSOC)){
             $element = ["name"=>$result["Nombre"],"id"=>$result["IdMovimiento"]];
             array_push($array,$element);
-        }
-        return $array;
+          }
+          return $array;
        }
        catch(PDOEXCEPTION $e){
-        print_r("Connection Failed: ".$e->getMessage());
+          print_r("Connection Failed: ".$e->getMessage());
           return false;
-        }
+       }
     }
 
     public function getElement($stmt){
@@ -121,9 +121,9 @@ class modelFunctions extends model{
         return $result;
       }
       catch(PDOEXCEPTION $e){
-        print_r("Connection Failed: ".$e->getMessage());
+          print_r("Connection Failed: ".$e->getMessage());
           return false;
-        }
+      }
     }
 
     public function verifyExist($stmt){
@@ -137,10 +137,10 @@ class modelFunctions extends model{
           return false;
         }
         else{ return true; }
-     }
-     catch(PDO_EXCEPTION $e){
-       printf("Connection Failed: ".$e->getMessage());
-     }
+      }
+      catch(PDO_EXCEPTION $e){
+        printf("Connection Failed: ".$e->getMessage());
+      }
     }
 }
 ?>

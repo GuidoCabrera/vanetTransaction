@@ -37,5 +37,4 @@
          echo $this->idRol;
      }
  }
-
 ?>

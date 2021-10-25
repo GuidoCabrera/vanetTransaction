@@ -1,4 +1,5 @@
-var inputs = document.querySelectorAll("#inputGroup input");
+var inputs = document.querySelectorAll("#containerBody #inputGroup input");
+var inputsModal = document.querySelectorAll("#modalNewU input"); 
 var btnModif = document.getElementById("btnModif");
 var btnDelet = document.getElementById("btnDelet");
 var btnSubModif = document.getElementById("btnUsers");
@@ -9,7 +10,6 @@ var form = document.getElementById("formUsers");
 var form1 = document.getElementById("formDataUsers");
 var form2 = document.getElementById("formNewUser");
 var btnNew = document.getElementById("btnCreate");
-var inputRol = document.getElementById("rolUser");
 var msj = document.getElementById("msj");
 var divmsj = document.getElementById("divMsj");
 
@@ -52,27 +52,13 @@ btnSubModif.addEventListener("click",function(){
 
   var aux2 = verifyName2(inputs[0].value);
 
-if(aux2){
+  if(aux2){
     if(valueInputs.name==inputs[0].value&&valueInputs.surname==inputs[1].value&&valueInputs.password==inputs[2].value&&valueInputs.rol==inputs[3].value){
         alert("No se ha realizado ningun cambio");
     }
-    else{
-      if(inputs[0].value!==""&&inputs[1].value!==""&&inputs[2].value!==""&&inputs[3].value!==""){
-        if(inputs[3].value==2||inputs[3].value==1){
-         form1.submit();
-      }
-      else{
-        alert("Solo se acepta valor 1(Admin) y 2(Estandar) en el campo de rol");
-      }
-    }
-    else{
-      alert("Hay campos sin completar");
-    }
-    }
+    else{ verifyEmptyAndRol(inputs,form1); }
   }
-  else{
-    alert("Este Nombre de usuario ya existe, tendras que elegir un distinto");
-  }
+  else{ alert("Este Nombre de usuario ya existe, tendras que elegir un distinto"); }
 });
 
 // Cambiando usuario
@@ -107,21 +93,9 @@ if(aux2){
   var aux = verifyName(inputName.value);
 
   if(aux){
-   if(inputs[0].value!==""&&inputs[1].value!==""&&inputs[2].value!==""&&inputs[3].value!==""){
-         if(inputRol.value==1||inputRol.value==2){
-          form2.submit();
-         }
-         else{
-           alert("Solo se aceptan valor 1(Admin) o 2(Estandar) en el campo de Rol");
-         }
-       }
-       else{
-         alert("Hay campos sin completar");
-       }
-     }
-     else{
-       alert("El nombre elegido para el nuevo usuario ya existe, eliga uno diferente");
-     }
+     verifyEmptyAndRol(inputsModal,form2);
+  }
+  else{ alert("El nombre elegido para el nuevo usuario ya existe, eliga uno diferente"); }
  });
 
  // Funcion que Verifica si el nombre ya existe
@@ -151,4 +125,17 @@ if(aux2){
     }
  });
     return auxBool;
+ }
+
+ //Funcion que verificar que los inputs no esten vacios y que el rol sea 1 o 2
+ function verifyEmptyAndRol(inputs,form){
+  if(inputs[0].value!==""&&inputs[1].value!==""&&inputs[2].value!==""&&inputs[3].value!==""){
+       if(inputs[3].value==2||inputs[3].value==1){
+          form.submit();
+       }
+       else{
+          alert("Solo se acepta valor 1(Admin) y 2(Estandar) en el campo de rol");
+       }
+  }
+  else{ alert("Hay campos sin completar"); }
  }

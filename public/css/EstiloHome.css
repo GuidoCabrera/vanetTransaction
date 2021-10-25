@@ -1,31 +1,30 @@
-
-#containerHome{ 
+#containerHome {
     padding: 20px 15px;
 }
 
-.noscroll{
+.noscroll {
     overflow: hidden;
-}  
+}
 
-#containerHeader{
-    height: 95px; 
+#containerHeader {
+    height: 95px;
     background: #C4E4F4;
     z-index: 1;
     display: flex;
     margin-bottom: 0;
 }
 
-#containerHeader #containerSearch{
+#containerHeader #containerSearch {
     padding-left: 30px;
     flex: 1;
 }
 
-#containerHeader #containerChange{
-    flex : 1;
+#containerHeader #containerChange {
+    flex: 1;
     align-self: center;
 }
 
-#containerHeader #containerChange #icons{
+#containerHeader #containerChange #icons {
     height: 40px;
     width: 95px;
     position: relative;
@@ -34,7 +33,7 @@
     margin-top: 25px;
 }
 
-#containerHeader #containerChange #icons a{
+#containerHeader #containerChange #icons a {
     text-decoration: none;
     position: absolute;
     height: 100%;
@@ -45,30 +44,30 @@
     text-align: center;
 }
 
-#containerHeader #containerChange #icons a:nth-child(2){
+#containerHeader #containerChange #icons a:nth-child(2) {
     position: absolute;
     right: 0;
 }
 
-#containerHeader #containerChange #icons a:hover{
+#containerHeader #containerChange #icons a:hover {
     background: #9CC4E3;
 }
 
-#containerHeader #containerChange #icons i{
+#containerHeader #containerChange #icons i {
     text-decoration: none;
     font-size: 30px;
     color: black;
 }
 
-#containerHeader #containerSearch .inputBox{
+#containerHeader #containerSearch .inputBox {
     display: inline-block;
 }
 
-#containerHeader #containerSearch .inputBox:nth-child(2){
+#containerHeader #containerSearch .inputBox:nth-child(2) {
     margin-left: 20px;
 }
 
-#containerHeader #containerSearch .inputBox p{
+#containerHeader #containerSearch .inputBox p {
     font-size: 20px;
     font-weight: 500;
     margin-left: 3px;
@@ -76,7 +75,7 @@
     font-family: 'Roboto Condensed', sans-serif;
 }
 
-#containerHeader #containerSearch select{
+#containerHeader #containerSearch select {
     width: 150px;
     height: 30px;
     border-radius: 5px;
@@ -86,54 +85,56 @@
     background: #fff;
 }
 
-#containerHeader #containerSearch select:hover{
+#containerHeader #containerSearch select:hover {
     background: #C4E4F4;
     border: 2px solid black;
 }
 
-#containerHeader #containerSearch select option{
+#containerHeader #containerSearch select option {
     background: #C4E4F4;
 }
 
-#containerHeader #containerSearch .inputBox select:focus{
+#containerHeader #containerSearch .inputBox select:focus {
     outline: none;
     border: 2px solid black;
 }
 
-#containerHeader #containerSearch .inputBox input{
+#containerHeader #containerSearch .inputBox input {
     width: 160px;
     height: 25px;
     font-family: 'Roboto Condensed', sans-serif;
     transition: background-color .2s;
 }
 
-#containerHeader #containerSearch .inputBox input,#containerHeader #containerSearch .inputBox select{
+#containerHeader #containerSearch .inputBox input,
+#containerHeader #containerSearch .inputBox select {
     padding-left: 5px;
 }
 
- #containerHeader #containerSearch .inputBox input:hover,#containerHeader #containerSearch .inputBox input:focus{
+#containerHeader #containerSearch .inputBox input:hover,
+#containerHeader #containerSearch .inputBox input:focus {
     outline: none;
     background: transparent;
     border: 2px solid black;
 }
 
-#dateToday{
+#dateToday {
     display: none;
 }
 
-#containerMessage{
+#containerMessage {
     padding: 0 10px;
     background: #C4E4F4;
     text-align: center;
     border: 2px solid #C4E4F4;
 }
 
-#containerMessage p{
+#containerMessage p {
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 20px;
 }
 
-#containerBody{
+#containerBody {
     background: #C4E4F4;
     padding: 10px 0;
     border: hidden;
@@ -141,7 +142,7 @@
     margin-bottom: 0;
 }
 
-#tableBox{
+#tableBox {
     height: auto;
     max-height: 350px;
     width: 98%;
@@ -150,20 +151,20 @@
     overflow-x: hidden;
 }
 
-#tableBoxResults{
+#tableBoxResults {
     width: 98%;
     height: 50px;
     margin: 0 auto;
     position: relative;
 }
 
-#tableBox table{
+#tableBox table {
     width: 100%;
     background: #fff;
     border: none;
 }
 
-#tableBoxResults table{
+#tableBoxResults table {
     width: 400px;
     height: 50px;
     background: #fff;
@@ -172,26 +173,33 @@
     right: 0;
 }
 
-table,th,td{
+table,
+th,
+td {
     border-collapse: collapse;
 }
 
-#tableBox td, #tableBox th, #tableBoxResults th,#tableBoxResults td {
+#tableBox td,
+#tableBox th,
+#tableBoxResults th,
+#tableBoxResults td {
     text-align: center;
     padding: 8px;
 }
 
-#tableBox td , #tableBoxResults td{
+#tableBox td,
+#tableBoxResults td {
     border-right: 1px solid #f8f8f8;
     font-size: 17px;
     font-family: 'Roboto Condensed', sans-serif;
 }
 
-.tdDate{
+.tdDate {
     display: none;
 }
 
-#tableBox th, #tableBoxResults th {
+#tableBox th,
+#tableBoxResults th {
     color: #ffffff;
     background: #092327;
     font-family: 'Fira Sans Condensed', sans-serif;
@@ -206,15 +214,17 @@ table,th,td{
 
 ::-webkit-scrollbar {
     width: 6px;
-} 
-::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
-} 
-::-webkit-scrollbar-thumb {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
 }
 
-#containerFooter{
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+#containerFooter {
     background: #C4E4F4;
     border: 1px solid #C4E4F4;
     padding: 20px 25px;
@@ -222,69 +232,70 @@ table,th,td{
     margin-top: -1px;
 }
 
-#containerFooter form #inputGroup{
+#containerFooter form #inputGroup {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     height: auto;
     margin: 5px 10px 10px 0px;
-  }
+}
 
-  #containerFooter form #inputGroup .inputBox{
-      margin-bottom: 15px;
-      width: calc(100% / 2 - 5px);
-  }
+#containerFooter form #inputGroup .inputBox {
+    margin-bottom: 15px;
+    width: calc(100% / 2 - 5px);
+}
 
-  #containerFooter form #inputGroup #boxSelectPay{
+#containerFooter form #inputGroup #boxSelectPay {
     width: 100%;
 }
 
-  #containerFooter form #inputGroup .inputBox p{
+#containerFooter form #inputGroup .inputBox p {
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 18px;
 }
 
-#containerFooter form #inputGroup .inputBox:nth-child(even) p{
+#containerFooter form #inputGroup .inputBox:nth-child(even) p {
     margin-left: 20px;
     text-align: start;
 }
 
- #containerFooter form #inputGroup .inputBox:nth-child(odd) p{
+#containerFooter form #inputGroup .inputBox:nth-child(odd) p {
     margin-right: 15px;
     width: 50%;
     float: right;
 }
 
-#containerFooter form #inputGroup .inputBox:nth-child(5) p{
+#containerFooter form #inputGroup .inputBox:nth-child(5) p {
     text-align: center;
     margin: 15px 0;
 }
 
- #containerFooter form #inputGroup .inputBox input{
-     width: 50%;
-     position: relative;
-     height: 30px;
-     outline: none;
-     border-radius: 5px;
-     border: 1px solid #7eb4cf;
-     border-bottom: 2px solid #7eb4cf;
-     padding-left: 15px;
- }
+#containerFooter form #inputGroup .inputBox input {
+    width: 50%;
+    position: relative;
+    height: 30px;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #7eb4cf;
+    border-bottom: 2px solid #7eb4cf;
+    padding-left: 15px;
+}
 
- #containerFooter form #inputGroup .inputBox:nth-child(even) input{
+#containerFooter form #inputGroup .inputBox:nth-child(even) input {
     margin-left: 10px;
 }
 
-#containerFooter form #inputGroup .inputBox:nth-child(3) input, #containerFooter form #inputGroup .inputBox:nth-child(1) select{
+#containerFooter form #inputGroup .inputBox:nth-child(3) input,
+#containerFooter form #inputGroup .inputBox:nth-child(1) select {
     float: right;
     margin-right: 10px;
 }
 
-#containerFooter form #inputGroup .inputBox:nth-child(1) select{
-   margin-right: calc(17% + 27px);
+#containerFooter form #inputGroup .inputBox:nth-child(1) select {
+    margin-right: calc(17% + 27px);
 }
 
- #containerFooter form #inputGroup .inputBox select{
+#containerFooter form #inputGroup .inputBox select {
     width: 33%;
     position: relative;
     /* left: 40%; */
@@ -292,59 +303,60 @@ table,th,td{
     outline: none;
     border-radius: 5px;
     border: 1px solid #7eb4cf;
-     border-bottom: 2px solid #7eb4cf;
- }
+    border-bottom: 2px solid #7eb4cf;
+}
 
- #containerFooter form #inputGroup .inputBox:nth-child(5){
+#containerFooter form #inputGroup .inputBox:nth-child(5) {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
- }
+}
 
- #containerFooter form #inputGroup .inputBox #selectPayment{
+#containerFooter form #inputGroup .inputBox #selectPayment {
     width: 230px;
- }
+}
 
- #dateFooter{
-     display: none;
- }
+#dateFooter {
+    display: none;
+}
 
- #userFooter{
-     display: none;
- }
+#userFooter {
+    display: none;
+}
 
- #btnBox{
-     height: 45px;
-     width: 70px;
-     margin-top: 5px;
-     position: relative;
-     left: 92%;
- }
- 
- #btnBox button{
+#btnBox {
+    height: 45px;
+    width: 70px;
+    margin-top: 5px;
+    position: relative;
+    left: 92%;
+}
+
+#btnBox button {
     width: 100%;
     height: 100%;
     border-radius: 5px;
     background: #1ea730;
     cursor: pointer;
- }
+}
 
- #btnBox button i{
+#btnBox button i {
     font-size: 35px;
- }
+}
 
- #btnBox button:hover{
+#btnBox button:hover {
     background: #20912f;
- }
+}
 
- #containerFooter form #inputGroup .inputBox input:focus,#containerFooter form #inputGroup .inputBox select:focus{
+#containerFooter form #inputGroup .inputBox input:focus,
+#containerFooter form #inputGroup .inputBox select:focus {
     border: 1px solid #3282aa;
     border-bottom: 2px solid #3282aa;
 }
 
-.containerModalHome{
+.containerModalHome {
     background-color: rgba(0, 0, 0, 0.3);
     text-align: center;
     position: fixed;
@@ -358,15 +370,15 @@ table,th,td{
     width: 100vw;
     transition: opacity 0.3s ease;
     overflow-y: scroll;
-    box-sizing: border-box; 
+    box-sizing: border-box;
 }
 
-.show{
+.show {
     opacity: 1;
     pointer-events: auto;
 }
 
-.modalModifH{
+.modalModifH {
     width: 600px;
     height: auto;
     max-height: auto;
@@ -374,27 +386,27 @@ table,th,td{
     padding: 20px 25px;
     background: #bfcbde;
     transition: transform 1s;
-    transform: translateY(-200%); 
+    transform: translateY(-200%);
 }
 
-.modalOpen{
-   transform: translateY(0%);
+.modalOpen {
+    transform: translateY(0%);
 }
 
-#containerGroup{
+#containerGroup {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     height: auto;
 }
 
-#titleModalH{
+#titleModalH {
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 25px;
     text-align: center;
 }
 
-#containerGroup .inputBox{
+#containerGroup .inputBox {
     display: flex;
     margin-bottom: 15px;
     width: calc(100% / 2 - 5px);
@@ -403,33 +415,33 @@ table,th,td{
     flex-direction: column;
 }
 
-#containerGroup .inputBox:nth-child(5){
-   width: 100%;
+#containerGroup .inputBox:nth-child(5) {
+    width: 100%;
 }
 
-#containerGroup .inputBox p{
+#containerGroup .inputBox p {
     margin-bottom: 10px;
     font-family: 'Fira Sans Condensed', sans-serif;
 }
 
-#containerGroup .inputBox input{
+#containerGroup .inputBox input {
     background: none;
-	padding-bottom: 2px;
-	border: none;
-	outline: 0px;
+    padding-bottom: 2px;
+    border: none;
+    outline: 0px;
     height: 25px;
     padding-left: 5px;
     border-radius: 5px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.39);
     transition: 0.3s;
     box-sizing: border-box;
-} 
+}
 
-#containerGroup .inputBox input:focus{
+#containerGroup .inputBox input:focus {
     border: 2px solid black;
-} 
+}
 
-#containerGroup .inputBox select{
+#containerGroup .inputBox select {
     height: 30px;
     outline: none;
     border-radius: 5px;
@@ -439,36 +451,36 @@ table,th,td{
     background: none;
 }
 
-#containerGroup .inputBox:nth-child(1) select{
+#containerGroup .inputBox:nth-child(1) select {
     width: 50%;
 }
 
-#containerGroup .inputBox:nth-child(5) select{
+#containerGroup .inputBox:nth-child(5) select {
     width: 25%;
 }
 
 
-#containerGroup .inputBox select:focus{
+#containerGroup .inputBox select:focus {
     border: 1px solid black;
     border-bottom: 2px solid black;
 }
 
-#containerGroup .inputBox select option{
+#containerGroup .inputBox select option {
     background: #bfcbde;
 }
 
-#containerGroup .inputBox select option:hover{
+#containerGroup .inputBox select option:hover {
     background: #9fb6da;
 }
 
-#btnBoxModify{
+#btnBoxModify {
     width: 100%;
     height: 30px;
     margin-top: 20px;
     text-align: center;
 }
 
-#btnBoxModify button{
+#btnBoxModify button {
     width: 20%;
     height: 100%;
     border-radius: 5px;
@@ -480,273 +492,254 @@ table,th,td{
     cursor: pointer;
 }
 
-#btnCloseModify{
+#btnCloseModify {
     margin-right: 10px;
 }
 
-#btnBoxModify button:hover{
+#btnBoxModify button:hover {
     background: #214f55;
- }
-
- @media(max-width:991px) and (min-width:820px) { 
-#containerHeader #containerSearch .inputBox input{
-    width: 170px;
-}
-#containerHeader #containerSearch select{
-    width: 170px;
-}
-#containerFooter form #inputGroup .inputBox input{
-    width: 60%;
-}
-#containerFooter form #inputGroup .inputBox select{
-    width: 43%;
- }
-#containerFooter form #inputGroup .inputBox #selectPayment{
-    width: 250px;
- }
- #containerFooter form #inputGroup .inputBox:nth-child(odd) p{
-    margin-right: 60px;
-}
-#containerFooter form #inputGroup .inputBox:nth-child(5) p{
-    margin: 15px 0;
-    text-align: center;
-}
 }
 
-@media(max-width:819px) and (min-width:720px) {
-#containerHeader #containerSearch{
-    flex : 2;
-   }
-#containerFooter form #inputGroup .inputBox input{
-    width: 65%;
-}
-#containerFooter form #inputGroup .inputBox select{
-    width: 48%;
- }
- #containerFooter form #inputGroup .inputBox #selectPayment{
-    width: 250px;
- }
- #tableBox{
-    width: 99%;
-}
-#btnBox{
-    left: 90%;
-}
-#containerFooter form #inputGroup .inputBox:nth-child(odd) p{
-    margin-right: 65px;
-}
-#containerFooter form #inputGroup .inputBox:nth-child(5) p{
-    margin: 15px 0;
-    text-align: center;
-}
-}
-
-@media(max-width:719px) and (min-width:600px){  
-#containerHome{
-    padding: 15px 10px;
-}
-#containerHeader #containerSearch{
-    flex : 2;
-   } 
-#containerFooter form #inputGroup .inputBox input{
-    width: 80%;
-    font-size: 13px;
-    padding-left: 5px;
-}
-#containerFooter form #inputGroup .inputBox select{
-    width: 60%;
- }
- #containerFooter form #inputGroup .inputBox #selectPayment{
-    width: 230px;
- }
- #tableBox{
-    width: 99%;
-}
-#btnBox{
-    left: 87%;
-}
- #containerFooter form #inputGroup .inputBox:nth-child(odd) p{
-    margin-right: 100px;
-} /*
-#containerFooter form #inputGroup .inputBox:nth-child(1) p{
-    margin-left: 35px;
-} */
- #containerFooter form #inputGroup .inputBox:nth-child(5) p{
-    margin: 15px 0;
-    text-align: center;
-} 
-}
-
-@media(max-width:670px) and (min-width:600px){ 
-    .modalModifH{
-        width: 500px;
+@media(max-width:991px) and (min-width:820px) {
+    #containerHeader #containerSearch .inputBox input {
+        width: 170px;
     }
-    #containerGroup .inputBox:nth-child(1) select{
+
+    #containerHeader #containerSearch select {
+        width: 170px;
+    }
+
+    #containerFooter form #inputGroup .inputBox input {
         width: 60%;
     }
-    
-    #containerGroup .inputBox:nth-child(5) select{
-        width: calc(60%/2);
-    }
+
+    #containerFooter form #inputGroup .inputBox select {
+        width: 43%;
     }
 
-    @media(max-width:599px) and (min-width:500px){
-
-    .modalModifH{
-        width: 420px;
-    }
-    #containerGroup .inputBox:nth-child(1) select{
-        width: 70%;
-    }
-    
-    #containerGroup .inputBox:nth-child(5) select{
-        width: calc(70%/2);
+    #containerFooter form #inputGroup .inputBox #selectPayment {
+        width: 250px;
     }
 
+    #containerFooter form #inputGroup .inputBox:nth-child(odd) p {
+        margin-right: 60px;
     }
 
-    @media(max-width:499px) and (min-width:400px){
-        #containerGroup .inputBox{
-            display: block;
-            width: 100%;
-            margin: 0 auto;
-            text-align: center;
-        }
-        .modalModifH{
-            width: 330px;
-            height: auto;
-        }
-        #containerGroup .inputBox:nth-child(1) select,#containerGroup .inputBox:nth-child(5) select{
-            width: 60%;
-        }
-        #btnBoxModify button{
-            width: 30%;
-        }
-        }
-
-        @media(max-width:399px) and (min-width:280px){
-        #containerGroup .inputBox{
-            display: block;
-            width: 100%;
-            margin: 0 auto;
-            text-align: center;
-        }
-        .modalModifH{
-            width: 77%;
-            height: auto;
-        }
-        #containerGroup .inputBox:nth-child(1) select,#containerGroup .inputBox:nth-child(5) select{
-            width: 65%;
-        }
-        #btnBoxModify button{
-            width: 40%;
-        }
-    }
-
-/* @media(max-width:369px) and (min-width:280px){
-#containerFooter form #inputGroup .inputBox input{
-    padding-left: 50px;
-}
-} */
-
-/* @media(max-width:599px) and (min-width:530px){
-    #containerHeader{
-        height: auto;
-        background: green;
-    }
-    #containerHeader #containerSearch .inputBox{
-        display: block;
-        width: 300px;
-        float: left;
-    }
-    #containerHeader #containerSearch .inputBox:nth-child(2){
-        margin-bottom: 10px;
-    }
-    #containerHeader #containerSearch .inputBox:nth-child(2){
-        margin-left: 0px;
-    } 
-    #tableBox td {
-        font-size: 16px;  
-    }
-    #tableBox th {
-        font-size: 18px;
-    }
-    #containerFooter form #inputGroup .inputBox input{
-        width: 90%;
-        padding-left: 5px;
-    }
-    #containerFooter form #inputGroup .inputBox input::placeholder{
-        font-size: 13px;
-    }
-    #containerHeader #containerChange #icons{
-        margin-top: 110px;
-    }
-    #containerFooter form #inputGroup .inputBox select{
-        width: 69%;
-     }
-     #containerFooter form #inputGroup .inputBox #selectPayment{
-        width: 230px;
-     }
-     #tableBox{
-        width: 99%;
-    }
-    #btnBox{
-        left: 86%;
-    }
-    #containerFooter form #inputGroup .inputBox:nth-child(odd) p{
-        margin-right: 100px;
-    }
-    #containerFooter form #inputGroup .inputBox:nth-child(5) p{
+    #containerFooter form #inputGroup .inputBox:nth-child(5) p {
         margin: 15px 0;
         text-align: center;
     }
-} */
+}
 
-/* @media(max-width:529px) and (min-width:370px){
-    #containerHeader{
+@media(max-width:819px) and (min-width:720px) {
+    #containerHeader #containerSearch {
+        flex: 2;
+    }
+
+    #containerFooter form #inputGroup .inputBox input {
+        width: 65%;
+    }
+
+    #containerFooter form #inputGroup .inputBox select {
+        width: 48%;
+    }
+
+    #containerFooter form #inputGroup .inputBox #selectPayment {
+        width: 250px;
+    }
+
+    #tableBox {
+        width: 99%;
+    }
+
+    #btnBox {
+        left: 90%;
+    }
+
+    #containerFooter form #inputGroup .inputBox:nth-child(odd) p {
+        margin-right: 65px;
+    }
+
+    #containerFooter form #inputGroup .inputBox:nth-child(5) p {
+        margin: 15px 0;
+        text-align: center;
+    }
+}
+
+@media(max-width:719px) and (min-width:600px) {
+    #containerHome {
+        padding: 15px 10px;
+    }
+
+    #containerHeader #containerSearch {
+        flex: 2;
+    }
+
+    #containerFooter form #inputGroup .inputBox input {
+        width: 80%;
+        font-size: 13px;
+        padding-left: 5px;
+    }
+
+    #containerFooter form #inputGroup .inputBox select {
+        width: 60%;
+    }
+
+    #containerFooter form #inputGroup .inputBox #selectPayment {
+        width: 230px;
+    }
+
+    #tableBox {
+        width: 99%;
+    }
+
+    #btnBox {
+        left: 87%;
+    }
+
+    #containerFooter form #inputGroup .inputBox:nth-child(odd) p {
+        margin-right: 100px;
+    }
+    #containerFooter form #inputGroup .inputBox:nth-child(5) p {
+        margin: 15px 0;
+        text-align: center;
+    }
+}
+
+@media(max-width:670px) and (min-width:600px) {
+    .modalModifH {
+        width: 500px;
+    }
+
+    #containerGroup .inputBox:nth-child(1) select {
+        width: 60%;
+    }
+
+    #containerGroup .inputBox:nth-child(5) select {
+        width: calc(60%/2);
+    }
+}
+
+@media(max-width:599px) and (min-width:500px) {
+
+    .modalModifH {
+        width: 420px;
+    }
+
+    #containerGroup .inputBox:nth-child(1) select {
+        width: 70%;
+    }
+
+    #containerGroup .inputBox:nth-child(5) select {
+        width: calc(70%/2);
+    }
+
+}
+
+@media(max-width:499px) and (min-width:400px) {
+    #containerGroup .inputBox {
+        display: block;
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .modalModifH {
+        width: 330px;
         height: auto;
     }
-    #containerHeader #containerSearch .inputBox{
+
+    #containerGroup .inputBox:nth-child(1) select,
+    #containerGroup .inputBox:nth-child(5) select {
+        width: 60%;
+    }
+
+    #btnBoxModify button {
+        width: 30%;
+    }
+}
+
+@media(max-width:399px) and (min-width:280px) {
+    #containerGroup .inputBox {
         display: block;
-        width: 200px;
-        float: left;
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
     }
-    #containerHeader #containerSearch .inputBox:nth-child(2){
-        margin-bottom: 10px;
-        margin-left: 0px;
+
+    .modalModifH {
+        width: 77%;
+        height: auto;
     }
-    #tableBox td {
+
+    #containerGroup .inputBox:nth-child(1) select,
+    #containerGroup .inputBox:nth-child(5) select {
+        width: 65%;
+    }
+
+    #btnBoxModify button {
+        width: 40%;
+    }
+}
+
+@media(max-width:599px) and (min-width:530px) {
+    #containerFooter form #inputGroup .inputBox input {
+        width: 90%;
+    }
+    #containerFooter form #inputGroup .inputBox input::placeholder {
+        font-size: 13px;
+    }
+    #containerFooter form #inputGroup .inputBox select {
+        width: 69%;
+    }
+    #containerFooter form #inputGroup .inputBox #selectPayment {
+        width: 230px;
+    }
+    #tableBox {
+        width: 99%;
+    }
+    #btnBox {
+        left: 86%;
+    }
+    #containerFooter form #inputGroup .inputBox:nth-child(odd) p {
+        margin-right: 100px;
+    }
+    #containerFooter form #inputGroup .inputBox:nth-child(5) p {
+        margin: 15px 0;
+        text-align: center;
+    }
+}
+
+ @media(max-width:529px) and (min-width:370px){
+    #tableBox td, #tableBoxResults td {
         font-size: 16px;  
     }
-    #tableBox th {
+    #tableBox th , #tableBoxResults th {
         font-size: 18px;
+        font-weight: 300;
     }
     #containerFooter form #inputGroup .inputBox input{
         width: 95%;
-        padding-left: 5px;
+        padding-left: 13px;
     }
     #containerFooter form #inputGroup .inputBox input::placeholder{
         font-size: 0;
-    }
-    #containerHeader #containerChange #icons{
-        margin-top: 110px;
-        margin-right: 20px;
     }
     #containerFooter form #inputGroup .inputBox:nth-child(1) select{
         float: left;
         height: 35px;
         width: 80%;
      }
-     #containerFooter form #inputGroup .inputBox:nth-child(5) select{
+    #containerFooter form #inputGroup .inputBox:nth-child(5) select{
         height: 35px;   
      }
-     #containerFooter form #inputGroup .inputBox:nth-child(3) input{
+    #containerFooter form #inputGroup .inputBox:nth-child(3) input{
         margin: 0;
      }
     #btnBox{
         left: 83%;
     }
-     #containerFooter form #inputGroup .inputBox:nth-child(3) p{
+    #containerFooter form #inputGroup .inputBox:nth-child(3) p{
         float: left;
         margin-left: 10px;
     }
@@ -757,16 +750,20 @@ table,th,td{
     #containerFooter form #inputGroup .inputBox:nth-child(5) p{
         text-align: center;
     }
+    #tableBoxResults table{
+        width: 100%;
+        height: 30px;
+        background: #fff;
+        border: none;
+        overflow-x: auto;
+    }
     #tableBox{
         overflow-x: auto;
     }
-}
+  }
+
 
 @media(max-width:369px) and (min-width:280px){
-    #containerHeader{
-        height: auto;
-        flex-direction: column;
-    }
     #containerHeader #containerChange{
         width: 100%;
     }
@@ -775,22 +772,12 @@ table,th,td{
         width: 200px;
         float: left;
     }
-    #containerHeader #containerSearch .inputBox:nth-child(2){
-        margin-bottom: 10px;
-        margin-left: 0px;
-    } 
-    #containerHeader #containerChange #icons{
-        bottom: 5px;
-        left: 25px;
+    #tableBox td, #tableBoxResults td {
+        font-size: 15px;  
     }
-    #tableBox td {
-        font-size: 16px;  
-    }
-    #tableBox th {
-        font-size: 18px;
-    }
-    #containerFooter{
-        padding: 5px 10px;
+    #tableBox th , #tableBoxResults th {
+        font-size: 17px;
+        font-weight: 300;
     }
     #containerFooter form #inputGroup .inputBox input{
         width: 95%;
@@ -817,12 +804,10 @@ table,th,td{
     }
     #containerFooter form #inputGroup .inputBox:nth-child(2) input, #containerFooter form #inputGroup .inputBox:nth-child(4) input,#containerFooter form #inputGroup .inputBox:nth-child(3) input{
         margin: 0;
-        padding: 0;
     }
     #containerFooter form #inputGroup .inputBox:nth-child(1) select, #containerFooter form #inputGroup .inputBox:nth-child(5) select{
       width: 90%;
       margin: 0 auto;
-      padding: 0;
     }
     #containerFooter form #inputGroup .inputBox #selectPayment{
         width: 90%;
@@ -833,10 +818,14 @@ table,th,td{
         left: 75%;
         margin: 15px 0;
     }
+    #tableBoxResults table{
+        width: 100%;
+        height: 30px;
+        background: #fff;
+        border: none;
+        overflow-x: auto;
+    }    
     #tableBox{
         overflow-x: auto;
     }
-} */
-
-
-
+}
